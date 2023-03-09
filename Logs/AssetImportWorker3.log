@@ -1,0 +1,318 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.16f1 (4016570cf34f) revision 4200023'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Education' Language: 'en' Physical Memory: 16333 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2021.3.16f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+C:/Users/Ken Luu/Desktop/CPS643-VR/CPS643_Project
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+51362
+Successfully changed project path to: C:/Users/Ken Luu/Desktop/CPS643-VR/CPS643_Project
+C:/Users/Ken Luu/Desktop/CPS643-VR/CPS643_Project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [14828] Host "[IP] 192.168.2.22 [Port] 0 [Flags] 2 [Guid] 279870485 [EditorId] 279870485 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PVHHURK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [14828] Host "[IP] 192.168.2.22 [Port] 0 [Flags] 2 [Guid] 279870485 [EditorId] 279870485 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-PVHHURK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 88.70 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.16f1 (4016570cf34f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2021.3.16f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Ken Luu/Desktop/CPS643-VR/CPS643_Project/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1e89)
+    Vendor:   NVIDIA
+    VRAM:     5968 MB
+    Driver:   31.0.15.1694
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2021.3.16f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2021.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 2021.3.16f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56896
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2021.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004443 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 92.14 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.583 seconds
+Domain Reload Profiling:
+	ReloadAssembly (583ms)
+		BeginReloadAssembly (66ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (420ms)
+			LoadAssemblies (64ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (89ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (264ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (92ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (123ms)
+				ProcessInitializeOnLoadMethodAttributes (40ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.006848 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Ken Luu\Desktop\CPS643-VR\CPS643_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Ken Luu\Desktop\CPS643-VR\CPS643_Project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.07 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Completed reload, in  0.996 seconds
+Domain Reload Profiling:
+	ReloadAssembly (996ms)
+		BeginReloadAssembly (101ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (787ms)
+			LoadAssemblies (80ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (259ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (48ms)
+			SetupLoadedEditorAssemblies (363ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (93ms)
+				ProcessInitializeOnLoadAttributes (234ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.72 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3682 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (113.9 KB). Loaded Objects now: 4142.
+Memory consumption went from 131.1 MB to 131.0 MB.
+Total: 3.020200 ms (FindLiveObjects: 0.318400 ms CreateObjectMapping: 0.083400 ms MarkObjects: 2.511500 ms  DeleteObjects: 0.105700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 3108.365023 seconds.
+  path: Assets/SteamVR/Materials/workshop.mat
+  artifactKey: Guid(712cd3a70a5a1da41a6594aac6a97abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/Materials/workshop.mat using Guid(712cd3a70a5a1da41a6594aac6a97abe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '996f8853f704712129058a4ae27b3a0d') in 0.150719 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.488781 seconds.
+  path: Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportPointLocked.mat
+  artifactKey: Guid(c8665e1aa63020343bc825410291e43a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportPointLocked.mat using Guid(c8665e1aa63020343bc825410291e43a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a21669b5b22fb3d82379135f54e269ab') in 0.012857 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.003583 seconds.
+  path: Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportPointHighlighted.mat
+  artifactKey: Guid(92c458d658d953f4588489c06de30b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportPointHighlighted.mat using Guid(92c458d658d953f4588489c06de30b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad11e867fe626a6119e99e8be9c36d30') in 0.011275 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.038707 seconds.
+  path: Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportPlayspaceVisualize.mat
+  artifactKey: Guid(ced2760f8133c2743a275ba997adc9db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportPlayspaceVisualize.mat using Guid(ced2760f8133c2743a275ba997adc9db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4a1f7c0b02a511449d8f2087487e385') in 0.012085 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.039926 seconds.
+  path: Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaVisibleLow.mat
+  artifactKey: Guid(50e5b65061d0b044da1bfd0dc52d912d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaVisibleLow.mat using Guid(50e5b65061d0b044da1bfd0dc52d912d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75657e60b3d111b11868650cc01a8f82') in 0.011617 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.114641 seconds.
+  path: Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaHighlightedLow.mat
+  artifactKey: Guid(bbd3c57c95ca5934abf56f614110fa53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaHighlightedLow.mat using Guid(bbd3c57c95ca5934abf56f614110fa53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d6336b59906f853eaffbca4bc4f2c70') in 0.011027 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaLocked.mat
+  artifactKey: Guid(0fe9e4228ebb3bc469ead815cd305d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaLocked.mat using Guid(0fe9e4228ebb3bc469ead815cd305d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fc10916361b0b3c04f5f8cdbb772559') in 0.012438 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.219297 seconds.
+  path: Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaHighlighted.mat
+  artifactKey: Guid(9001ec1e087534147bd9f18cbf931597) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Teleport/Materials URP/URPTeleportAreaHighlighted.mat using Guid(9001ec1e087534147bd9f18cbf931597) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e52f6ccdeeb1edd981acfac66d75f08') in 0.015158 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.056253 seconds.
+  path: Assets/SteamVR/InteractionSystem/Samples/Materials/URPflowerMat.mat
+  artifactKey: Guid(0a4508424b3d2a74fb181adab02ece03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Samples/Materials/URPflowerMat.mat using Guid(0a4508424b3d2a74fb181adab02ece03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a63751414a155e701ed333f5c94e804d') in 0.023701 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/SteamVR/InteractionSystem/Samples/Materials/URPflowerMatOp.mat
+  artifactKey: Guid(ac9d55e9d2534df40a84030248c00fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Samples/Materials/URPflowerMatOp.mat using Guid(ac9d55e9d2534df40a84030248c00fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e951df3b6ce94d3201bce50e219aad82') in 0.013022 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.120561 seconds.
+  path: Assets/SteamVR/InteractionSystem/Hints/Materials/URPControllerTextHintAnchor.mat
+  artifactKey: Guid(5ee00630a4cba94459f162ea174a1d97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Hints/Materials/URPControllerTextHintAnchor.mat using Guid(5ee00630a4cba94459f162ea174a1d97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba3062db9dfcddb1c0d25bbf3951fc96') in 0.012506 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SteamVR/InteractionSystem/Samples/Models/Materials/unnamed.mat
+  artifactKey: Guid(21caec5e9129c334db1cc10e5cb06a88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Samples/Models/Materials/unnamed.mat using Guid(21caec5e9129c334db1cc10e5cb06a88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '581693492a0ea6049efff63e4e703c7a') in 0.019232 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.801266 seconds.
+  path: Assets/SteamVR/InteractionSystem/Longbow/Materials/ArcheryTargetWeeble.mat
+  artifactKey: Guid(0ae132d3c08907a4d931b3ed4debc646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Longbow/Materials/ArcheryTargetWeeble.mat using Guid(0ae132d3c08907a4d931b3ed4debc646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff0073468c395ef98dcbcc01eda10659') in 0.243376 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SteamVR/InteractionSystem/Longbow/Materials/Arrow.mat
+  artifactKey: Guid(f7cd62d595c763c428123f260c78b711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Longbow/Materials/Arrow.mat using Guid(f7cd62d595c763c428123f260c78b711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '496476145bbd217c31764c8b6d858dc5') in 0.019888 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/SteamVR/InteractionSystem/Longbow/Materials/BalloonPop.mat
+  artifactKey: Guid(2d01d8c885250364bac66a45791f02e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Longbow/Materials/BalloonPop.mat using Guid(2d01d8c885250364bac66a45791f02e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92c6bf80ffd6015a81056901f8b7f104') in 0.035143 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/SteamVR/InteractionSystem/Longbow/Materials/ArrowGlint.mat
+  artifactKey: Guid(f3004e0c0e5df074abcb3548fd812bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Longbow/Materials/ArrowGlint.mat using Guid(f3004e0c0e5df074abcb3548fd812bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14065c4a2984097b58cbeb174063c442') in 0.033721 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 498.225566 seconds.
+  path: Assets/SteamVR/InteractionSystem/Samples/Squishy/Squishy.fbx
+  artifactKey: Guid(7b2f451dc7f3fad4f8b8342970631a0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SteamVR/InteractionSystem/Samples/Squishy/Squishy.fbx using Guid(7b2f451dc7f3fad4f8b8342970631a0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '792a5b57939b767a085cf9875d9d7ccb') in 0.268655 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 317.275443 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Defeated.mat
+  artifactKey: Guid(ac7f26dda1114824f9e7c953240fc612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Defeated.mat using Guid(ac7f26dda1114824f9e7c953240fc612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e0991ec572c7e8516cbb924d380baba') in 0.235313 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Ninja.mat
+  artifactKey: Guid(b1bac821fae591c44a498b84658d7eaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Ninja.mat using Guid(b1bac821fae591c44a498b84658d7eaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49e6ab19f731252aa49a09e73e969086') in 0.011777 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Plasma.mat
+  artifactKey: Guid(28929489a7a13cb42ae8924c9b31f0f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Plasma.mat using Guid(28929489a7a13cb42ae8924c9b31f0f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f65d990b5e7db8cda570203b0d79291') in 0.115062 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Nightstrike.mat
+  artifactKey: Guid(c57aa671b01f925448878a13a45cee27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Nightstrike.mat using Guid(c57aa671b01f925448878a13a45cee27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '448c3f1949b9ef900a93231017aea195') in 0.025164 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Magma.mat
+  artifactKey: Guid(1e7c4fe830693ac479346c12d02ef1bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Model/Materials/MAT_Sword_Cyber_Magma.mat using Guid(1e7c4fe830693ac479346c12d02ef1bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b4454f26b3ec205bafef0414a6fd263') in 0.022062 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.202935 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Prefabs/Prefab_Sword_Cyber_Defeated.prefab
+  artifactKey: Guid(95a10ed4139d27943a88b996f0a227b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Prefabs/Prefab_Sword_Cyber_Defeated.prefab using Guid(95a10ed4139d27943a88b996f0a227b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8be3ae0640050b5187d73b17a080b6bc') in 0.024497 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Prefabs/Prefab_Sword_Cyber_Magma.prefab
+  artifactKey: Guid(f61520d526e2573438225f84a0220847) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Prefabs/Prefab_Sword_Cyber_Magma.prefab using Guid(f61520d526e2573438225f84a0220847) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3ad80cf98a146e4ae34d8218891128f') in 0.022748 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/External/Low Poly Cyber Ninja Sword/Prefabs/Prefab_Sword_Cyber_Thunder.prefab
+  artifactKey: Guid(837b69c41a8880a43ac3434cbbadb285) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Cyber Ninja Sword/Prefabs/Prefab_Sword_Cyber_Thunder.prefab using Guid(837b69c41a8880a43ac3434cbbadb285) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccdfb8ad769aaf79122acba28aaf0d2b') in 0.021536 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
