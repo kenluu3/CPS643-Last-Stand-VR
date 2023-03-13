@@ -54,7 +54,11 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/PlayerMove",
+      "name": "/actions/default/in/MovePlayer",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/default/in/FireGun",
       "type": "boolean"
     },
     {

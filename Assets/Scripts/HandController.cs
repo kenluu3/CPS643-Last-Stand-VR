@@ -7,6 +7,8 @@ public class HandController : MonoBehaviour
 {
     //public SteamVR_Action_Vibration haptics;
     public SteamVR_Action_Boolean grabWeapon;
+    public SteamVR_Action_Boolean fireGun;
+    public SteamVR_Action_Vector2 movePlayer;
     public SteamVR_Input_Sources hand;
     public SteamVR_Behaviour_Pose pose;
 
@@ -20,14 +22,24 @@ public class HandController : MonoBehaviour
 
         grabWeapon.AddOnStateDownListener(OnGrab, hand);
         grabWeapon.AddOnStateUpListener(OnRelease, hand);
+
+        fireGun.AddOnStateDownListener(OnFire, hand);
+    }
+
+    void OnFire(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        if (attachedWeapon && attachedWeapon.GetComponent<GunController>() != null)
+        {
+            attachedWeapon.GetComponent<GunController>().FireBullet();
+        }
     }
 
     void OnGrab(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         if (collidingObject && collidingObject.gameObject.layer == 6 && !attachedWeapon)
         {
-            //haptics.Execute(0, 0.25f, 0.5f, 1.0f, hand);
             attachedWeapon = collidingObject.gameObject;
+            attachedWeapon.GetComponent<WeaponController>().UpdateParent(this);
 
             FixedJoint attach = gameObject.AddComponent<FixedJoint>();
             attach.connectedBody = attachedWeapon.GetComponent<Rigidbody>();
@@ -44,8 +56,14 @@ public class HandController : MonoBehaviour
             rb.velocity = pose.GetVelocity();
             rb.angularVelocity = pose.GetAngularVelocity();
 
+            attachedWeapon.GetComponent<WeaponController>().UpdateParent(null);
             attachedWeapon = null;
         }
+    }
+
+    public void TriggerHaptics()
+    {
+        Debug.Log("Supposedly Trigger Haptics");
     }
 
     private void LateUpdate()
@@ -55,7 +73,6 @@ public class HandController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //haptics.Execute(0, 0.25f, 0.5f, 1.0f, hand);
         collidingObject = other.gameObject;
     }
 

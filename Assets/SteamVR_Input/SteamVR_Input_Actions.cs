@@ -41,7 +41,9 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_default_GrabWeapon;
         
-        private static SteamVR_Action_Boolean p_default_PlayerMove;
+        private static SteamVR_Action_Vector2 p_default_MovePlayer;
+        
+        private static SteamVR_Action_Boolean p_default_FireGun;
         
         private static SteamVR_Action_Vibration p_default_Haptic;
         
@@ -155,11 +157,19 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Boolean default_PlayerMove
+        public static SteamVR_Action_Vector2 default_MovePlayer
         {
             get
             {
-                return SteamVR_Actions.p_default_PlayerMove.GetCopy<SteamVR_Action_Boolean>();
+                return SteamVR_Actions.p_default_MovePlayer.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_FireGun
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_FireGun.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -242,7 +252,8 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_GrabWeapon,
-                    SteamVR_Actions.default_PlayerMove,
+                    SteamVR_Actions.default_MovePlayer,
+                    SteamVR_Actions.default_FireGun,
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
@@ -264,7 +275,8 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_GrabWeapon,
-                    SteamVR_Actions.default_PlayerMove,
+                    SteamVR_Actions.default_MovePlayer,
+                    SteamVR_Actions.default_FireGun,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -288,7 +300,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_GrabWeapon,
-                    SteamVR_Actions.default_PlayerMove,
+                    SteamVR_Actions.default_FireGun,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset};
@@ -296,6 +308,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.buggy_Throttle};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
+                    SteamVR_Actions.default_MovePlayer,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.buggy_Steering};
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
@@ -312,7 +325,8 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_GrabWeapon,
-                    SteamVR_Actions.default_PlayerMove,
+                    SteamVR_Actions.default_MovePlayer,
+                    SteamVR_Actions.default_FireGun,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -335,7 +349,8 @@ namespace Valve.VR
             SteamVR_Actions.p_default_SnapTurnLeft = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SnapTurnLeft")));
             SteamVR_Actions.p_default_SnapTurnRight = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SnapTurnRight")));
             SteamVR_Actions.p_default_GrabWeapon = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/GrabWeapon")));
-            SteamVR_Actions.p_default_PlayerMove = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PlayerMove")));
+            SteamVR_Actions.p_default_MovePlayer = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/default/in/MovePlayer")));
+            SteamVR_Actions.p_default_FireGun = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/FireGun")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
             SteamVR_Actions.p_platformer_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
             SteamVR_Actions.p_platformer_Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));

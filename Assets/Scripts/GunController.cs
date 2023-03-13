@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunScript : MonoBehaviour
+public class GunController : WeaponController
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject bulletPrefab;
 
-    // Update is called once per frame
-    void Update()
+    public void FireBullet()
     {
-        
+        Debug.Log("Supposedly Firing a bullet.");
+    //    GameObject bullet = Instantiate(bulletPrefab);
     }
 }
