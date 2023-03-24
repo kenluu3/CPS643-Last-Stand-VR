@@ -14,8 +14,8 @@ TagManager:
   - PlayerWeapon
   - PlayerWeaponHandle
   - Bullet
-  - 
-  - 
+  - isGround
+  - isPlayer
   - 
   - 
   - 
