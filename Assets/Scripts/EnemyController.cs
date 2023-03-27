@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public abstract class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask groundLayer, playerLayer;
-    public GameObject projectile;
-    public Transform cannonTransform;
     public float health;
 
     //attacking
     public float attackCooldown;
-    bool attacked;
+    public bool attacked;
 
     public float attackRange;
     public bool playerInAttackRange;
@@ -22,8 +20,9 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").transform;
     }
-    void Update()
+    protected virtual void Update()
     {
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
         if (!playerInAttackRange)
@@ -36,12 +35,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Chase()
+/*    private void Chase()
     {
         agent.SetDestination(player.position);
-    }
+    }*/
 
-    private void Attack()
+/*
+    protected virtual void Attack()
     {
         agent.SetDestination(transform.position);
         transform.LookAt(player);
@@ -60,9 +60,9 @@ public class EnemyController : MonoBehaviour
             // check if this projetile hits the player
             Destroy(rb.gameObject, 3f);
         }
-    }
+    }*/
 
-    private void ResetAttack()
+    public void ResetAttack()
     {
         attacked = false;
     }
@@ -87,4 +87,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    protected abstract void Chase();
+    protected abstract void Attack();
 }

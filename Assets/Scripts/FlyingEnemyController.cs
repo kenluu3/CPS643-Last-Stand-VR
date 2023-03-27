@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FlyingEnemyController : EnemyController
+{
+    public float hoverHeight;
+    public float hoverSpeed;
+    public float laserLifetime;
+
+    public GameObject laserPrefab;
+    public Transform laserSpawnPoint;
+
+
+    protected override void Update()
+    {
+        // Hovering
+        float hoverOffset = Mathf.Sin(Time.time * hoverSpeed) * hoverHeight;
+        transform.position = new Vector3(transform.position.x, transform.position.y + hoverOffset, transform.position.z);
+
+        // Call base class update for movement controls
+        base.Update();
+    }
+
+    protected override void Attack()
+    {
+        agent.SetDestination(transform.position);
+        transform.LookAt(player);
+
+        if (playerInAttackRange && !attacked)
+        {
+            attacked = true;
+
+            // look for line renderer code instead from lab 2
+            GameObject laser = Instantiate(laserPrefab, laserSpawnPoint.position, Quaternion.identity);
+            Vector3 direction = (player.position - transform.position).normalized;
+            laser.transform.rotation = Quaternion.LookRotation(direction);
+
+            Destroy(laser, laserLifetime);
+            Invoke(nameof(ResetAttack), attackCooldown);
+        }
+    }
+
+    protected override void Chase()
+    {
+        Vector3 targetPosition = new Vector3(player.position.x, player.position.y + hoverHeight, player.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, hoverSpeed * Time.deltaTime);
+    }
+}
