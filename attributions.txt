@@ -4,6 +4,9 @@
 
 //	Place your attributions below:
 //
+// 	How to: Unity VR Joystick Movement
+//	https://www.youtube.com/watch?v=SqP7Xzldr1Q
+
 //	Example:
 //
 //	Toy Balloonship by NV3D licenced under Unity-EULA
