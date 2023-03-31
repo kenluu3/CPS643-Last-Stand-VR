@@ -36,7 +36,6 @@ public class LeftHandController : HandController
 
     void OnTeleport(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
-        Debug.Log("Hello World");
         if (elapsedTimeTeleport >= teleportCooldown)
         {
             StartCoroutine(TeleportPlayer());
