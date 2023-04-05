@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1458391615630120, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
       propertyPath: m_Name
-      value: AlienFighter
+      value: AlienFighter Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4154595508381948, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
       propertyPath: m_RootOrder
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542dc183abb7d642976d19f65b21c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 39065721}
+  agent: {fileID: 0}
   player: {fileID: 0}
   groundLayer:
     serializedVersion: 2
@@ -104,7 +104,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3686991997934003630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.7794717
   m_Speed: 3.5
