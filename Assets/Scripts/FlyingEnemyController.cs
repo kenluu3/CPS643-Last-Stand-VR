@@ -15,11 +15,9 @@ public class FlyingEnemyController : EnemyController
 
     protected override void Update()
     {
-        // Hovering
         float hoverOffset = Mathf.Sin(Time.time * hoverSpeed) * hoverHeight;
         transform.position = new Vector3(transform.position.x, transform.position.y + hoverOffset, transform.position.z);
 
-        // Call base class update for movement controls
         base.Update();
     }
 

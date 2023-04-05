@@ -35,33 +35,6 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-/*    private void Chase()
-    {
-        agent.SetDestination(player.position);
-    }*/
-
-/*
-    protected virtual void Attack()
-    {
-        agent.SetDestination(transform.position);
-        transform.LookAt(player);
-
-        if (!attacked)
-        {
-
-            Rigidbody rb = Instantiate(projectile, cannonTransform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            Vector3 direction = player.position - cannonTransform.position;
-            direction += Vector3.up;
-            rb.AddForce(direction.normalized * 32f, ForceMode.Impulse);
-
-            attacked = true;
-            Invoke(nameof(ResetAttack), attackCooldown);
-
-            // check if this projetile hits the player
-            Destroy(rb.gameObject, 3f);
-        }
-    }*/
-
     public void ResetAttack()
     {
         attacked = false;

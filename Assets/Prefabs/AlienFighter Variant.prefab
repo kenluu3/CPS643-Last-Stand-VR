@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlienFighter Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1458391615630120, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4154595508381948, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -67,6 +71,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1458391615630120, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
   m_PrefabInstance: {fileID: 3688445716555959942}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &4542148580904462965
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3686991997934003630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.9192554
+  m_Height: 1.6560793
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.098113626, z: -0.30684307}
 --- !u!114 &39065720
 MonoBehaviour:
   m_ObjectHideFlags: 0
