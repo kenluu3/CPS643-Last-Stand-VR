@@ -95,27 +95,6 @@ MonoBehaviour:
   hoverHeight: 0.1
   hoverSpeed: 5
   laserLifetime: 0.2
+  speed: 2
   laserPrefab: {fileID: 7303024837527302889, guid: e92d0e61a155dbb4e945aae10c948f0c, type: 3}
   laserSpawnPoint: {fileID: 3684295528802641530}
---- !u!195 &39065721
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3686991997934003630}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.7794717
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.459852
-  m_BaseOffset: 0.729926
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
