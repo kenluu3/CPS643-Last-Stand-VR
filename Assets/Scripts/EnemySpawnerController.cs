@@ -16,7 +16,6 @@ public class EnemySpawnerController : MonoBehaviour
 
     public void StartNewWave(GameObject[] enemyPrefabs, int enemiesPerSpawner)
     {
-        Debug.Log("Starting new wave for spawner: " + gameObject.name);
         enemies.Clear();
         StartCoroutine(SpawnEnemies(enemyPrefabs, enemiesPerSpawner));
     }
@@ -43,7 +42,7 @@ public class EnemySpawnerController : MonoBehaviour
         enemies.Remove(enemy);
         if (enemies.Count == 0)
         {
-            EnemyWaveManager.instance.UnregisterSpawner();
+            EnemyWaveManager.instance.ResetSpawner();
         }
     }
 }

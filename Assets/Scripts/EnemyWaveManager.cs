@@ -26,14 +26,6 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        if (allSpawnersRegistered)
-        {
-            StartNewWave();
-        }
-    }
-
     public void RegisterSpawner(EnemySpawnerController spawner)
     {
         spawners.Add(spawner);
@@ -46,12 +38,13 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    public void UnregisterSpawner()
+    public void ResetSpawner()
     {
         numActiveSpawners--;
         if (numActiveSpawners == 0)
         {
             StartNewWave();
+            numActiveSpawners = totalNumberOfSpawners;
         }
     }
 
