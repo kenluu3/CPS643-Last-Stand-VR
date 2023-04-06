@@ -17,6 +17,8 @@ public abstract class EnemyController : MonoBehaviour
     public float attackRange;
     public bool playerInAttackRange;
 
+    public EnemySpawnerController spawner;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -53,6 +55,11 @@ public abstract class EnemyController : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        spawner.RemoveEnemy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
