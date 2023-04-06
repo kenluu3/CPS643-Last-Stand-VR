@@ -7,6 +7,7 @@ public class FlyingEnemyController : EnemyController
     public float hoverHeight;
     public float hoverSpeed;
     public float laserLifetime;
+    public float speed;
 
     public GameObject laserPrefab;
     public Transform laserSpawnPoint;
@@ -14,11 +15,9 @@ public class FlyingEnemyController : EnemyController
 
     protected override void Update()
     {
-        // Hovering
         float hoverOffset = Mathf.Sin(Time.time * hoverSpeed) * hoverHeight;
         transform.position = new Vector3(transform.position.x, transform.position.y + hoverOffset, transform.position.z);
 
-        // Call base class update for movement controls
         base.Update();
     }
 
@@ -43,7 +42,8 @@ public class FlyingEnemyController : EnemyController
 
     protected override void Chase()
     {
-        Vector3 targetPosition = new Vector3(player.position.x, player.position.y + hoverHeight, player.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, hoverSpeed * Time.deltaTime);
+        transform.LookAt(player);
+        Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 }

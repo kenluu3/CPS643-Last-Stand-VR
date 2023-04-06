@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private float uptime = 5.0f;
-    private float bulletForce = 35.0f;
+    private float uptime = 3.0f;
+    private float bulletForce = 40.0f;
     private int bulletDamage = 50;
     private Rigidbody rb;
 
