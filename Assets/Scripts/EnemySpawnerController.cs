@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class EnemySpawnerController : MonoBehaviour
 {
-
-    public static int totalEnemiesAlive = 0;
-    public GameObject[] enemyPrefabs;
-
     public float spawnInterval;
     public int enemiesPerSpawner;
 
@@ -15,26 +11,17 @@ public class EnemySpawnerController : MonoBehaviour
 
     private void Start()
     {
-        StartNewWave();
+        EnemyWaveManager.instance.RegisterSpawner(this);
     }
 
-    private void Update()
-    {
-        Debug.Log(totalEnemiesAlive);
-        if (totalEnemiesAlive == 0)
-        {
-            StartNewWave();
-        }
-    }
-
-    private void StartNewWave()
+    public void StartNewWave(GameObject[] enemyPrefabs, int enemiesPerSpawner)
     {
         Debug.Log("Starting new wave for spawner: " + gameObject.name);
         enemies.Clear();
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnEnemies(enemyPrefabs, enemiesPerSpawner));
     }
 
-    private IEnumerator SpawnEnemies()
+    private IEnumerator SpawnEnemies(GameObject[] enemyPrefabs, int enemiesPerSpawner)
     {
         for (int i = 0; i < enemiesPerSpawner; i++)
         {
@@ -44,7 +31,6 @@ public class EnemySpawnerController : MonoBehaviour
             enemySpawnPosition = new Vector3(transform.position.x, enemyPrefab.transform.position.y, transform.position.z);
             GameObject enemy = Instantiate(enemyPrefab, enemySpawnPosition, transform.rotation);
             enemies.Add(enemy);
-            totalEnemiesAlive++;
 
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             enemyController.spawner = this;
@@ -55,7 +41,9 @@ public class EnemySpawnerController : MonoBehaviour
     public void RemoveEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
-        totalEnemiesAlive--;
-        Debug.Log(totalEnemiesAlive);
+        if (enemies.Count == 0)
+        {
+            EnemyWaveManager.instance.UnregisterSpawner();
+        }
     }
 }
