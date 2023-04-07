@@ -9,6 +9,7 @@ public class LeftHandController : HandController
     public SteamVR_Action_Boolean teleportPlayer;
     public SteamVR_Action_Vector2 movePlayer;
 
+    public Transform gunTransform;
     public Transform playerRig;
     public Transform playerCamera;
     private float moveSpeed = 5.0f;
@@ -18,7 +19,7 @@ public class LeftHandController : HandController
 
     void Start()
     {
-        heldWeapon = transform.Find("Gun").gameObject;
+        heldWeapon = gunTransform.gameObject;
         fireGun.AddOnStateDownListener(OnFire, controller);
         teleportPlayer.AddOnStateDownListener(OnTeleport, controller);
     }
