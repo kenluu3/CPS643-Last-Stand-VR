@@ -7,14 +7,18 @@ public class GunController : WeaponController
 {
     private Transform gunBarrel1;
     private Transform gunBarrel2;
-    private float fireDelay = .5f;
+
+    private float fireDelay = .65f;
     private float elapsedTime;
 
+    private AudioSource fireSound;
+    
     public GameObject bulletPrefab;
 
-    void Start()
+    void Awake()
     {
         elapsedTime = fireDelay;
+        fireSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -37,6 +41,7 @@ public class GunController : WeaponController
             bullet2.transform.position = gunBarrel2.transform.position;
             bullet2.transform.rotation = gunBarrel2.transform.rotation;
 
+            fireSound.Play();
             parentController.TriggerHaptics();
             elapsedTime = 0.0f;
         }
