@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int health = 100;
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] float intakeDamageCooldown = 2.0f;
+    [SerializeField] float intakeDamageCooldown = 1.5f;
 
     public HealthbarUI healthbarUI;
 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         {
             health = Mathf.Clamp(health - damage, 0, maxHealth);
             healthbarUI.updateHealthSize((float)health / maxHealth);
+            StartCoroutine(TakenDamageVisual());
 
             if (health <= 0)
             {
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
         {
-            // whatever damage here.
+            takeDamage(10); // update this to enemy damage
         }
     }
 
@@ -52,5 +54,12 @@ public class PlayerController : MonoBehaviour
         {
             // whatever damage here.
         }
+    }
+
+    IEnumerator TakenDamageVisual()
+    {
+        SteamVR_Fade.View(new Color(1.0f, 0.0f, 0.0f, 0.5f), 0);
+        yield return new WaitForSeconds(.35f);
+        SteamVR_Fade.View(Color.clear, .35f);
     }
 }
