@@ -26,25 +26,31 @@ public class PlayerRigController : MonoBehaviour
     public VRMap rightArmIK;
     public Transform headConstraint;
     [SerializeField] private Vector3 upperOffset; // To align body correctly.
+    [SerializeField] private float smoothingFactor;
 
     // Lower body
     private Animator animator;
     [SerializeField] private Vector3 footOffset;
 
+    // Calibrate floor.
+    public Transform groundCalibration;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         upperOffset = transform.position - headConstraint.position;
+        // Debug.Log(transform.position);
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
+        transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * smoothingFactor);
         transform.position = upperOffset + headConstraint.position;
 
         leftArmIK.MapToPlayerRig();
         rightArmIK.MapToPlayerRig();
         headIK.MapToPlayerRig();
+    //    groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -62,6 +68,18 @@ public class PlayerRigController : MonoBehaviour
                 animator.SetIKRotation(goal, Quaternion.LookRotation(Vector3.ProjectOnPlane(transform.forward, hit.normal), hit.normal));
                 animator.SetIKRotationWeight(goal, 1);
             }
+            else
+            {
+                animator.SetIKPositionWeight(goal, 0);
+                animator.SetIKRotationWeight(goal, 0);
+            }
         }
     }
+
+    /*    IEnumerator CalibrateGround()
+        {
+            Debug.Log(transform.position);
+            yield return new WaitForFixedUpdate();
+            groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
+        }*/
 }
