@@ -34,12 +34,14 @@ public class PlayerRigController : MonoBehaviour
 
     // Calibrate floor.
     public Transform groundCalibration;
+    private float maxHeight;
+    private float minHeight;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         upperOffset = transform.position - headConstraint.position;
-        // Debug.Log(transform.position);
+        StartCoroutine(CalibrateGround());
     }
 
     void FixedUpdate()
@@ -76,10 +78,11 @@ public class PlayerRigController : MonoBehaviour
         }
     }
 
-    /*    IEnumerator CalibrateGround()
-        {
-            Debug.Log(transform.position);
-            yield return new WaitForFixedUpdate();
-            groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
-        }*/
+    IEnumerator CalibrateGround()
+    {
+        yield return new WaitForFixedUpdate();
+        Debug.Log(transform.position);
+
+        //groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
+    }
 }
