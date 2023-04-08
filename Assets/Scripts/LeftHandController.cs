@@ -31,6 +31,8 @@ public class LeftHandController : HandController
 
     void FixedUpdate()
     {
+     //   Debug.Log(playerCamera.TransformDirection(new Vector3(movePlayer.axis.x, 0, movePlayer.axis.y)));
+
         Vector3 movementDir = playerCamera.TransformDirection(new Vector3(movePlayer.axis.x, 0, movePlayer.axis.y));
         playerRig.position += Vector3.ProjectOnPlane(Time.deltaTime * movementDir * moveSpeed, Vector3.up);
     }

@@ -20,25 +20,69 @@ public class VRMap
 
 public class PlayerRigController : MonoBehaviour
 {
+    // Upper body
     public VRMap headIK;
     public VRMap leftArmIK;
     public VRMap rightArmIK;
-
-    public Transform camera;
     public Transform headConstraint;
-    private Vector3 offset; // To align body correctly.
+    [SerializeField] private Vector3 upperOffset; // To align body correctly.
+    [SerializeField] private float smoothingFactor;
 
-    void Start()
+    // Lower body
+    private Animator animator;
+    [SerializeField] private Vector3 footOffset;
+
+    // Calibrate floor.
+    public Transform groundCalibration;
+    private float maxHeight;
+    private float minHeight;
+
+    void Awake()
     {
-        offset = transform.position - headConstraint.position;
+        animator = GetComponent<Animator>();
+        upperOffset = transform.position - headConstraint.position;
+        StartCoroutine(CalibrateGround());
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
-        transform.position = offset + headConstraint.position;
+        transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * smoothingFactor);
+        transform.position = upperOffset + headConstraint.position;
 
         leftArmIK.MapToPlayerRig();
         rightArmIK.MapToPlayerRig();
         headIK.MapToPlayerRig();
+    //    groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        AvatarIKGoal[] foot = new AvatarIKGoal[] { AvatarIKGoal.LeftFoot, AvatarIKGoal.RightFoot };
+        foreach (AvatarIKGoal goal in foot)
+        {
+            Vector3 footPos = animator.GetIKPosition(goal); // Checking where the feet is wrt to ground.
+
+            RaycastHit hit;
+            if (Physics.Raycast(footPos + Vector3.up, Vector3.down, out hit))
+            {
+                animator.SetIKPosition(goal, hit.point + footOffset);
+                animator.SetIKPositionWeight(goal, 1);
+                animator.SetIKRotation(goal, Quaternion.LookRotation(Vector3.ProjectOnPlane(transform.forward, hit.normal), hit.normal));
+                animator.SetIKRotationWeight(goal, 1);
+            }
+            else
+            {
+                animator.SetIKPositionWeight(goal, 0);
+                animator.SetIKRotationWeight(goal, 0);
+            }
+        }
+    }
+
+    IEnumerator CalibrateGround()
+    {
+        yield return new WaitForFixedUpdate();
+        Debug.Log(transform.position);
+
+        //groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
     }
 }
