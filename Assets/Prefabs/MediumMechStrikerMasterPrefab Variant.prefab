@@ -286,5 +286,6 @@ MonoBehaviour:
   attacked: 0
   attackRange: 20
   playerInAttackRange: 0
-  projectile: {fileID: 1827731918061572, guid: 31921d45a016d714188552e2972706a2, type: 3}
+  spawner: {fileID: 0}
+  projectile: {fileID: 3282868333709108893, guid: 46200419ca24c584491a66f1878e13ee, type: 3}
   cannonTransform: {fileID: 2055440930250823595}

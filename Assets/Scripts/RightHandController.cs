@@ -5,8 +5,10 @@ using Valve.VR;
 
 public class RightHandController : HandController
 {
+    public Transform swordTransform;
+
     void Start()
     {
-        heldWeapon = transform.Find("Sword").gameObject;
+        heldWeapon = swordTransform.gameObject;
     }
 }

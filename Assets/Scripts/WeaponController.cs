@@ -17,7 +17,7 @@ public abstract class WeaponController : MonoBehaviour
     {
         if (collision.gameObject.layer == 11) // Weapon has hit enemy
         {
-          //  rb.AddExplosionForce(2.0f, transform.position, 2.0f, 3.0F);
+            rb.AddExplosionForce(2.0f, transform.position, 2.0f, 3.0F);
             EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
             enemyObj.TakeDamage(weaponDamage);
         }

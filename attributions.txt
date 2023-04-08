@@ -16,4 +16,3 @@
 //  MinBy() by Jon Skeet Licenced under CC-by-SA
 //	http://stackoverflow.com/questions/914109/how-to-use-linq-to-select-object-with-minimum-or-maximum-property-value
 //	https://stackoverflow.blog/2009/06/attribution-required/
-
