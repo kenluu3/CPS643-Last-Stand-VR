@@ -9,6 +9,8 @@ public class BulletController : MonoBehaviour
     [SerializeField] private int bulletDamage = 50;
     private Rigidbody rb;
 
+    public GameObject explosionPrefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,6 +29,11 @@ public class BulletController : MonoBehaviour
         {
             EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
             enemyObj.TakeDamage(bulletDamage);
+
+            GameObject explosion = Instantiate(explosionPrefab);
+            explosion.transform.position = transform.position;
+            explosion.GetComponent<ParticleSystem>().Play();
+
             Destroy(gameObject);
         }
     }

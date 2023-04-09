@@ -13,7 +13,7 @@ public abstract class WeaponController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 11) // Weapon has hit enemy
         {
@@ -24,7 +24,7 @@ public abstract class WeaponController : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    protected virtual void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.layer == 11) // Weapon has hit enemy
         {
