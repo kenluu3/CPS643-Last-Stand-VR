@@ -11,6 +11,6 @@ public abstract class HandController : MonoBehaviour
 
     public void TriggerHaptics()
     {
-        haptics.Execute(0, 0.1f, 1.0f, 1.0f, controller);
+        haptics.Execute(0, .5f, 1.0f, 5.0f, controller);
     }
 }

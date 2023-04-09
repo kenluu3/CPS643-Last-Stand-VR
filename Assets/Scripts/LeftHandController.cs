@@ -9,13 +9,15 @@ public class LeftHandController : HandController
     public SteamVR_Action_Boolean teleportPlayer;
     public SteamVR_Action_Vector2 movePlayer;
 
+
+    public PlayerRigAnimation playerRigAnimator;
     public Transform gunTransform;
     public Transform playerRig;
     public Transform playerCamera;
-    private float moveSpeed = 5.0f;
+    private float moveSpeed = 2.0f;
 
     private float elapsedTimeTeleport = 5.0f;
-    private float teleportCooldown = 1.0f;
+    private float teleportCooldown = 1.5f;
 
     void Start()
     {
@@ -31,10 +33,16 @@ public class LeftHandController : HandController
 
     void FixedUpdate()
     {
-     //   Debug.Log(playerCamera.TransformDirection(new Vector3(movePlayer.axis.x, 0, movePlayer.axis.y)));
-
-        Vector3 movementDir = playerCamera.TransformDirection(new Vector3(movePlayer.axis.x, 0, movePlayer.axis.y));
-        playerRig.position += Vector3.ProjectOnPlane(Time.deltaTime * movementDir * moveSpeed, Vector3.up);
+        if (movePlayer.changed)
+        {
+            Vector3 movementDirection = playerCamera.TransformDirection(new Vector3(movePlayer.axis.x, 0, movePlayer.axis.y));
+            playerRig.position += Vector3.ProjectOnPlane(Time.deltaTime * movementDirection * moveSpeed, Vector3.up);
+            playerRigAnimator.playMoveAnimation(movementDirection);
+        }
+        else
+        {
+            playerRigAnimator.stopMoveAnimation();
+        }
     }
 
     void OnTeleport(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
