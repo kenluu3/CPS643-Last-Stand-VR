@@ -32,8 +32,7 @@ public class PlayerRigController : MonoBehaviour
     private Animator animator;
     [SerializeField] private Vector3 footOffset;
 
-    // Calibrate floor.
-    public Transform groundCalibration;
+    // Calibrated player height.
     private float maxHeight;
     private float minHeight;
 
@@ -41,7 +40,6 @@ public class PlayerRigController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         upperOffset = transform.position - headConstraint.position;
-        StartCoroutine(CalibrateGround());
     }
 
     void FixedUpdate()
@@ -52,7 +50,6 @@ public class PlayerRigController : MonoBehaviour
         leftArmIK.MapToPlayerRig();
         rightArmIK.MapToPlayerRig();
         headIK.MapToPlayerRig();
-    //    groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -76,13 +73,5 @@ public class PlayerRigController : MonoBehaviour
                 animator.SetIKRotationWeight(goal, 0);
             }
         }
-    }
-
-    IEnumerator CalibrateGround()
-    {
-        yield return new WaitForFixedUpdate();
-        Debug.Log(transform.position);
-
-        //groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
     }
 }

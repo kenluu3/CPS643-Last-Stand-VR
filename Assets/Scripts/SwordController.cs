@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SwordController : WeaponController
 {
-    private AudioSource hitSound;
+    public GameObject slashPrefab;
 
-    void Awake()
+    protected override void OnCollisionEnter(Collision collision)
     {
-        hitSound = GetComponent<AudioSource>();    
-    }
+        if (collision.gameObject.layer == 11)
+        {
+            base.OnCollisionEnter(collision);
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        hitSound.Play();
+            GameObject slashEffect = Instantiate(slashPrefab);
+            slashEffect.transform.position = collision.contacts[0].point;
+            slashEffect.GetComponent<ParticleSystem>().Play();
+        }
     }
 }
