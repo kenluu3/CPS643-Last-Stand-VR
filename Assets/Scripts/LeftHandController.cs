@@ -14,7 +14,7 @@ public class LeftHandController : HandController
     public Transform gunTransform;
     public Transform playerRig;
     public Transform playerCamera;
-    private float moveSpeed = 3.0f;
+    private float moveSpeed = 2.0f;
 
     private float elapsedTimeTeleport = 5.0f;
     private float teleportCooldown = 1.0f;
