@@ -1600,7 +1600,7 @@ MonoBehaviour:
   headIK:
     VRTarget: {fileID: 0}
     RigTarget: {fileID: 3630647191819726693}
-    trackingPositionOffset: {x: 0, y: -0.24, z: -0.12}
+    trackingPositionOffset: {x: 0, y: -0.22, z: -0.12}
     trackingRotationOffset: {x: 180, y: 90, z: 90}
   leftArmIK:
     VRTarget: {fileID: 0}
@@ -2640,7 +2640,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432480267652532825}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 999
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -2911,7 +2911,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434300615213364228}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 999
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0

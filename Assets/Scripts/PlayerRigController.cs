@@ -52,7 +52,7 @@ public class PlayerRigController : MonoBehaviour
         leftArmIK.MapToPlayerRig();
         rightArmIK.MapToPlayerRig();
         headIK.MapToPlayerRig();
-    //    groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
+        groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -81,8 +81,7 @@ public class PlayerRigController : MonoBehaviour
     IEnumerator CalibrateGround()
     {
         yield return new WaitForFixedUpdate();
-        Debug.Log(transform.position);
-
+        //Debug.Log(transform.position);
         //groundCalibration.transform.position = new Vector3(groundCalibration.position.x, transform.position.y, groundCalibration.position.z);
     }
 }
