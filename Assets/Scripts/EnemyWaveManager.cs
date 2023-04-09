@@ -12,7 +12,7 @@ public class EnemyWaveManager : MonoBehaviour
     private List<EnemySpawnerController> spawners = new List<EnemySpawnerController>();
     private int numActiveSpawners = 0;
 
-    private bool allSpawnersRegistered = false;
+    public static bool allSpawnersRegistered = false;
 
     private void Awake()
     {

@@ -10,6 +10,8 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 Assets/External
+Assets/Plugins
+Assets/Plugins.meta
 *.vrmanifest
 Packages/
 .vsconfig
