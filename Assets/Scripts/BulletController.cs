@@ -30,14 +30,4 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-/*    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.layer == 11) // Enemy Layer
-        {
-            EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
-            enemyObj.TakeDamage(bulletDamage);
-            Destroy(gameObject);
-        }
-    }*/
 }

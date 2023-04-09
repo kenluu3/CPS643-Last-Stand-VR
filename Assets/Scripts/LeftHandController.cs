@@ -17,7 +17,7 @@ public class LeftHandController : HandController
     private float moveSpeed = 2.0f;
 
     private float elapsedTimeTeleport = 5.0f;
-    private float teleportCooldown = 1.0f;
+    private float teleportCooldown = 1.5f;
 
     void Start()
     {

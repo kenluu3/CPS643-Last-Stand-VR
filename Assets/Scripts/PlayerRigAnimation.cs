@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerRigAnimation : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] private float smoothingFactor = 1;
 
     void Start()
     {
@@ -16,11 +15,8 @@ public class PlayerRigAnimation : MonoBehaviour
     {
         animator.SetBool("IsMoving", true);
 
-        float prevDirectionX = animator.GetFloat("DirectionX");
-        float prevDirectionY = animator.GetFloat("DirectionY");
-
-        animator.SetFloat("DirectionX", Mathf.Lerp(prevDirectionX, Mathf.Clamp(movementDirection.x, -1, 1), smoothingFactor));
-        animator.SetFloat("DirectionY", Mathf.Lerp(prevDirectionY, Mathf.Clamp(movementDirection.z, -1, 1), smoothingFactor));
+        animator.SetFloat("DirectionX", Mathf.Clamp(movementDirection.x, -1, 1));
+        animator.SetFloat("DirectionY", Mathf.Clamp(movementDirection.z, -1, 1));
     }
 
     public void stopMoveAnimation()

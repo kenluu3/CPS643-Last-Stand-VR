@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Valve.VR;
 
 public class PlayerController : MonoBehaviour
@@ -11,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float intakeDamageCooldown = 1.5f;
 
     public HealthbarUI healthbarUI;
-
     private float intakeDamageTimer = 2.0f;
 
     void Start()
@@ -49,13 +47,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+/*    
+ *    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
         {
             // whatever damage here.
         }
     }
+*/
 
     IEnumerator TakenDamageVisual()
     {
