@@ -10,11 +10,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float intakeDamageCooldown = 1.5f;
 
     public HealthbarUI healthbarUI;
+    public bool isInvincible = false;
     private float intakeDamageTimer = 2.0f;
+
+    private AudioSource audioSource;
+    public AudioClip takeDamageClip;
 
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -28,6 +32,8 @@ public class PlayerController : MonoBehaviour
         {
             health = Mathf.Clamp(health - damage, 0, maxHealth);
             healthbarUI.updateHealthSize((float)health / maxHealth);
+            audioSource.PlayOneShot(takeDamageClip);
+
             StartCoroutine(TakenDamageVisual());
 
             if (health <= 0)
@@ -48,7 +54,7 @@ public class PlayerController : MonoBehaviour
     }
 
 /*    
- *    private void OnTriggerStay(Collider other)
+     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
         {

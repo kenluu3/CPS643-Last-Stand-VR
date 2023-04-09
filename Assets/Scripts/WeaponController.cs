@@ -4,25 +4,24 @@ using UnityEngine;
 
 public abstract class WeaponController : MonoBehaviour
 {
-    private Rigidbody rb;
+    protected AudioSource audioSource;
     public HandController parentController;
     public int weaponDamage = 100;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 11) // Weapon has hit enemy
         {
-            rb.AddExplosionForce(2.0f, transform.position, 2.0f, 3.0F);
             EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
             enemyObj.TakeDamage(weaponDamage);
+            audioSource.Play();
+            parentController.TriggerHaptics();
         }
-
-        parentController.TriggerHaptics(); 
     }
 
     private void OnCollisionStay(Collision collision)
@@ -31,8 +30,7 @@ public abstract class WeaponController : MonoBehaviour
         {
             EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
             enemyObj.TakeDamage(weaponDamage);
+            parentController.TriggerHaptics();
         }
-
-        parentController.TriggerHaptics();
     }
 }
