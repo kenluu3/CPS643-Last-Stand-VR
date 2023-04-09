@@ -21,8 +21,6 @@ public class GroundEnemyController : EnemyController
 
             attacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
-
-            // check if this projetile hits the player
             Destroy(rb.gameObject, 3f);
         }
     }
@@ -30,5 +28,9 @@ public class GroundEnemyController : EnemyController
     protected override void Chase()
     {
         agent.SetDestination(player.position);
+    }
+    protected override void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

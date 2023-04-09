@@ -46,4 +46,9 @@ public class FlyingEnemyController : EnemyController
         Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
+
+    protected override void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
 }

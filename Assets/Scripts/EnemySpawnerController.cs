@@ -40,7 +40,7 @@ public class EnemySpawnerController : MonoBehaviour
     public void RemoveEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
-        if (enemies.Count == 0)
+        if (enemies.Count == 0 && EnemyWaveManager.allSpawnersRegistered)
         {
             EnemyWaveManager.instance.ResetSpawner();
         }
