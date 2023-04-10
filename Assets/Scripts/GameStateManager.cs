@@ -9,16 +9,20 @@ public class GameStateManager : MonoBehaviour
     /* Player Parameters */
     [SerializeField] private Transform playerRig;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private LeftHandController leftHandController;
 
     /* GameObjects in each game state */
-    [SerializeField] private GameObject preObjects; /* PreGame */
-    [SerializeField] private GameObject enemySpawners; /* PlayGame */
-    [SerializeField] private GameObject deathObjects; /* PostGame */
+    [SerializeField] private GameObject[] preObjects; /* PreGame */
+    [SerializeField] private GameObject[] playObjects; /* PlayGame */
+    [SerializeField] private GameObject[] postObjects; /* PostGame */
+
+    /* BGM AudioManager */
+    [SerializeField] private BGMPlayer bgmPlayer;
 
     /* Current game state */
     private GameState state;
 
-    void Awake()
+    void Start()
     {
         state = GameState.PreGame;
         UpdateGameState(state);
@@ -27,21 +31,22 @@ public class GameStateManager : MonoBehaviour
     public void UpdateGameState(GameState newState)
     {
         state = newState;
+        leftHandController.UpdateMovementBoundaries(-50f, 50f, 0, 50f); /* Default Standard Boundaries */
 
         if (state == GameState.PreGame)
         {
-            preObjects.SetActive(true);
-            enemySpawners.SetActive(false);
-            deathObjects.SetActive(false);
+            foreach (GameObject obj in playObjects) obj.SetActive(false);
+            foreach (GameObject obj in postObjects) obj.SetActive(false);
+            foreach (GameObject obj in preObjects) obj.SetActive(true);
 
             playerRig.transform.position = Vector3.zero;
             playerController.ResetState();
         }
         else if (state == GameState.PlayGame)
         {
-            preObjects.SetActive(false);
-            enemySpawners.SetActive(true);
-            deathObjects.SetActive(false);
+            foreach (GameObject obj in postObjects) obj.SetActive(false);
+            foreach (GameObject obj in preObjects) obj.SetActive(false);
+            foreach (GameObject obj in playObjects) obj.SetActive(true);
         }
         else if (state == GameState.PostGame)
         {
@@ -52,12 +57,14 @@ public class GameStateManager : MonoBehaviour
             {
                 Destroy(obj.gameObject);
             }
-
+            leftHandController.UpdateMovementBoundaries(-9f, 9f, -9f, 9f);
             playerRig.transform.position = Vector3.zero;
 
-            preObjects.SetActive(false);
-            enemySpawners.SetActive(false);
-            deathObjects.SetActive(true);
+            foreach (GameObject obj in preObjects) obj.SetActive(false);
+            foreach (GameObject obj in playObjects) obj.SetActive(false);
+            foreach (GameObject obj in postObjects) obj.SetActive(true);
         }
+
+        bgmPlayer.PlayBGM(state);
     }
 }

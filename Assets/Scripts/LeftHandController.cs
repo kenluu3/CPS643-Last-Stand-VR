@@ -26,7 +26,10 @@ public class LeftHandController : HandController
     [SerializeField] private float tpMagnitude = 6f;
     private float tpTimer;
 
-    void Awake()
+    /* Movement Boundaries: MinX, MaxX, MinZ, MaxZ */
+    private float[] boundaries = new float[4];
+
+    void Start()
     {
         tpTimer = tpCooldown;
         heldWeapon = gun;
@@ -44,13 +47,22 @@ public class LeftHandController : HandController
         if (move.changed)
         {
             Vector3 direction = playerCamera.TransformDirection(new Vector3(move.axis.x, 0, move.axis.y));
-            playerRig.position += Vector3.ProjectOnPlane(direction * playerSpeed * Time.deltaTime, Vector3.up);
+            playerRig.position = FinalMovePosition(direction, playerSpeed * Time.deltaTime, Vector3.zero);
             playerRigAnimator.PlayMoveAnimation(direction);
         }
         else
         {
             playerRigAnimator.StopMoveAnimation();
         }
+    }
+
+    /* Updates movement boundaries for player */
+    public void UpdateMovementBoundaries(float minX, float maxX, float minZ, float maxZ)
+    {
+        boundaries[0] = minX;
+        boundaries[1] = maxX;
+        boundaries[2] = minZ;
+        boundaries[3] = maxZ;
     }
 
     /* Handles gun firing */
@@ -66,22 +78,31 @@ public class LeftHandController : HandController
         if (tpTimer >= tpCooldown) StartCoroutine(TeleportPlayer());
     }
 
+    /* Computes final position from displacement */
+    Vector3 FinalMovePosition(Vector3 direction, float magnitude, Vector3 offset)
+    {
+        Vector3 target = playerRig.position + Vector3.ProjectOnPlane(direction * magnitude, Vector3.up);
+
+        target.x = Mathf.Clamp(target.x, boundaries[0], boundaries[1]);
+        target.z = Mathf.Clamp(target.z, boundaries[2], boundaries[3]);
+
+        return target + offset;
+    }
+
     /* Coroutine for teleportation */
     IEnumerator TeleportPlayer()
     {
         SteamVR_Fade.View(Color.black, .5f);
 
         Vector3 direction = playerCamera.TransformDirection(new Vector3(move.axis.x, 0, move.axis.y));
-        Vector3 target = playerRig.position + Vector3.ProjectOnPlane(direction * tpMagnitude, Vector3.up);
         Vector3 offset = playerRig.position - playerCamera.position;
         offset.y = 0;
 
         yield return new WaitForSeconds(.5f);
 
-        playerRig.position = target + offset;
+        playerRig.position = FinalMovePosition(direction, tpMagnitude, offset);
 
         SteamVR_Fade.View(Color.clear, .5f);
         tpTimer = 0;
-
     }
 }

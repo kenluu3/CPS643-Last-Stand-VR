@@ -46,9 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRig: {fileID: 0}
-  preObjects: {fileID: 0}
-  enemySpawners: {fileID: 0}
-  deathObjects: {fileID: 0}
+  playerController: {fileID: 0}
+  leftHandController: {fileID: 0}
+  preObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  playObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  postObjects:
+  - {fileID: 0}
+  bgmPlayer: {fileID: 0}
 --- !u!114 &4317233371603010626
 MonoBehaviour:
   m_ObjectHideFlags: 0
