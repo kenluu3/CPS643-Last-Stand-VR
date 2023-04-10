@@ -1361,11 +1361,6 @@ MonoBehaviour:
   playerSpeed: 2
   tpCooldown: 1.5
   tpMagnitude: 5
-  boundaries:
-  - 0
-  - 0
-  - 0
-  - 0
 --- !u!1 &2998074421629309420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1438,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
