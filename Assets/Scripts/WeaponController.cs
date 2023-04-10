@@ -24,7 +24,7 @@ public abstract class WeaponController : MonoBehaviour
         }
     }
 
-    protected virtual void OnCollisionStay(Collision collision)
+/*    protected virtual void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.layer == 11) // Weapon has hit enemy
         {
@@ -32,5 +32,5 @@ public abstract class WeaponController : MonoBehaviour
             enemyObj.TakeDamage(weaponDamage);
             parentController.TriggerHaptics();
         }
-    }
+    }*/
 }

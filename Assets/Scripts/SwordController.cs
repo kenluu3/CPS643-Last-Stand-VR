@@ -8,7 +8,7 @@ public class SwordController : WeaponController
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 11)
+        if (collision.gameObject.layer == 11 || collision.gameObject.layer == 13)
         {
             GameObject slashEffect = Instantiate(slashPrefab, transform.parent);
             slashEffect.transform.localRotation = Quaternion.Euler(180, 0, 0);

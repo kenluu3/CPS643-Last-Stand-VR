@@ -5,9 +5,10 @@ using Valve.VR;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
+    [SerializeField] private int health = 10;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] float intakeDamageCooldown = 1.5f;
+    private bool isAlive = true;
 
     public HealthbarUI healthbarUI;
     public bool isInvincible = false;
@@ -30,18 +31,17 @@ public class PlayerController : MonoBehaviour
 
     void takeDamage(int damage)
     {
-        if (intakeDamageTimer >= intakeDamageCooldown)
+        if (intakeDamageTimer >= intakeDamageCooldown && !isInvincible) 
         {
-            if (!isInvincible) 
+            if (isAlive) 
             {
                 health = Mathf.Clamp(health - damage, 0, maxHealth);
                 healthbarUI.updateHealthSize((float)health / maxHealth);
 
                 if (health <= 0)
                 {
-                    isInvincible = true; // player is dead.
-                    audioSource.PlayOneShot(deathClip);
-                    deathUI.gameObject.SetActive(true);
+                    isAlive = false;
+                    StartCoroutine(PlayerDeath());
                 }
                 else
                 {
@@ -51,6 +51,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void resetPlayer()
+    {
+        isInvincible = false;
+        health = maxHealth;
+        transform.position = Vector3.zero;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,5 +73,14 @@ public class PlayerController : MonoBehaviour
         SteamVR_Fade.View(new Color(1.0f, 0.0f, 0.0f, 0.5f), 0);
         yield return new WaitForSeconds(.35f);
         SteamVR_Fade.View(Color.clear, .35f);
+    }
+
+    IEnumerator PlayerDeath()
+    {
+        audioSource.PlayOneShot(takeDamageClip);
+        SteamVR_Fade.View(new Color(1.0f, 1.0f, 1.0f, 0.5f), takeDamageClip.length);
+        yield return new WaitForSeconds(takeDamageClip.length);
+        SteamVR_Fade.View(Color.clear, .2f);
+        transform.position = Vector3.zero;
     }
 }

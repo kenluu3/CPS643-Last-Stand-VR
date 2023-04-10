@@ -18,7 +18,7 @@ TagManager:
   - isPlayer
   - Enemy
   - EnemyProjectile
-  - 
+  - GameStartEnemy
   - 
   - 
   - 
