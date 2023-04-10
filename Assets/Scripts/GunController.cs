@@ -5,44 +5,54 @@ using Valve.VR;
 
 public class GunController : WeaponController
 {
-    private Transform gunBarrel1;
-    private Transform gunBarrel2;
+    /* Gun barrel locations */
+    [SerializeField] private int numBarrels = 2;
+    private Transform[] gunBarrels;
 
-    private float fireDelay = .65f;
-    private float elapsedTime;
+    /* Gun fire parameters */
+    [SerializeField] private float fireCooldown = .5f;
+    private float fireTimer;
+    public AudioClip fireAudio;
 
-    public AudioClip fireSound;
- 
+    /* Bullet object */
     public GameObject bulletPrefab;
 
     void Awake()
     {
-        elapsedTime = fireDelay;
+        fireTimer = fireCooldown;
+        UpdateBarrelLocation();
     }
 
     void Update()
     {
-        gunBarrel1 = transform.Find("Barrel1");
-        gunBarrel2 = transform.Find("Barrel2");
-        elapsedTime += Time.deltaTime;
+        fireTimer += Time.deltaTime;
+        UpdateBarrelLocation();
     }
 
-    public void FireBullet()
+    /* Updates transform of gun barrel */
+    private void UpdateBarrelLocation()
     {
-        if (elapsedTime >= fireDelay)
+        for (int i = 0; i < numBarrels; i++)
         {
-            GameObject bullet1 = Instantiate(bulletPrefab);
-            GameObject bullet2 = Instantiate(bulletPrefab);
+            gunBarrels[i] = transform.Find(string.Format("Barrel{0}", i + 1));
+        }
+    }
 
-            bullet1.transform.position = gunBarrel1.transform.position;
-            bullet1.transform.rotation = gunBarrel1.transform.rotation;
+    /* Launches bullets */
+    public void FireGun()
+    {
+        if (fireTimer >= fireCooldown)
+        {
+            GameObject[] bullets = new GameObject[] { Instantiate(bulletPrefab), Instantiate(bulletPrefab) };
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                bullets[i].transform.position = gunBarrels[i].transform.position;
+                bullets[i].transform.rotation = gunBarrels[i].transform.rotation;
+            }
 
-            bullet2.transform.position = gunBarrel2.transform.position;
-            bullet2.transform.rotation = gunBarrel2.transform.rotation;
-
-            audioSource.PlayOneShot(fireSound);
+            audioSource.PlayOneShot(fireAudio);
             parentController.TriggerHaptics();
-            elapsedTime = 0.0f;
+            fireTimer = 0;
         }
     }
 }

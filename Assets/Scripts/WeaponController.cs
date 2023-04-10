@@ -4,33 +4,34 @@ using UnityEngine;
 
 public abstract class WeaponController : MonoBehaviour
 {
-    protected AudioSource audioSource;
-    public HandController parentController;
-    public int weaponDamage = 100;
+    /* Controller */
+    [SerializeField] protected HandController parentController;
 
-    void Start()
+    /* Audio player for weapons */
+    protected AudioSource audioSource;
+
+    /* Weapon damage */
+    public int damage = 100;
+
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 11) // Weapon has hit enemy
+        /* Enemy || Dummy Layer Hit */
+        if (collision.gameObject.layer == 11 || collision.gameObject.layer == 13)
         {
-            EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
-            enemyObj.TakeDamage(weaponDamage);
+            /* Enemy Layer 11 */
+            if (collision.gameObject.GetComponent<EnemyController>())
+            {
+                EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+                enemy.TakeDamage(damage);
+            }
+
             audioSource.Play();
             parentController.TriggerHaptics();
         }
     }
-
-/*    protected virtual void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.layer == 11) // Weapon has hit enemy
-        {
-            EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
-            enemyObj.TakeDamage(weaponDamage);
-            parentController.TriggerHaptics();
-        }
-    }*/
 }

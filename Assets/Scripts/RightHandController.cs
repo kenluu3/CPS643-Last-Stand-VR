@@ -5,10 +5,11 @@ using Valve.VR;
 
 public class RightHandController : HandController
 {
-    public Transform swordTransform;
+    /* Right hand-held weapon */
+    [SerializeField] private GameObject sword;
 
-    void Start()
+    void Awake()
     {
-        heldWeapon = swordTransform.gameObject;
+        heldWeapon = sword;
     }
 }
