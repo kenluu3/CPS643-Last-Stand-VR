@@ -9,6 +9,7 @@ public abstract class EnemyController : MonoBehaviour
     public Transform player;
     public LayerMask groundLayer, playerLayer;
     public float health;
+    public bool dead;
 
     //attacking
     public float attackCooldown;
@@ -26,14 +27,17 @@ public abstract class EnemyController : MonoBehaviour
     }
     protected virtual void Update()
     {
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
-        if (!playerInAttackRange)
+        if (!dead)
         {
-            Chase();
-        }
-        else
-        {
-            Attack();
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+            if (!playerInAttackRange)
+            {
+                Chase();
+            }
+            else
+            {
+                Attack();
+            }
         }
     }
 
@@ -52,14 +56,17 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-    private void DestroyEnemy()
+/*    private void DestroyEnemy()
     {
         Destroy(gameObject);
-    }
+    }*/
 
     private void OnDestroy()
     {
-        spawner.RemoveEnemy(gameObject);
+        if (spawner != null)
+        {
+            spawner.RemoveEnemy(gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -70,4 +77,5 @@ public abstract class EnemyController : MonoBehaviour
 
     protected abstract void Chase();
     protected abstract void Attack();
+    protected abstract void DestroyEnemy();
 }
