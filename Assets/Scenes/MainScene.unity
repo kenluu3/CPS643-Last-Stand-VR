@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &181073327
+--- !u!43 &37033289
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,11 +287,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &191800679 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 604566362867345551, guid: 716ca60d1a566f444b7954c065f665fd, type: 3}
-  m_PrefabInstance: {fileID: 8529447978261057196}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &287970982 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4317233371603010627, guid: cf2a5d4c7ae169143989eca3f69ee307, type: 3}
@@ -501,23 +496,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8529447977322380727, guid: 716ca60d1a566f444b7954c065f665fd, type: 3}
   m_PrefabInstance: {fileID: 8529447978261057196}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1712032265 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8529447977757377701, guid: 716ca60d1a566f444b7954c065f665fd, type: 3}
-  m_PrefabInstance: {fileID: 8529447978261057196}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1729218235 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5911656848163411037, guid: 160643ea810f0a54db2b1bcc7dcd0efd, type: 3}
-  m_PrefabInstance: {fileID: 7069332351760656103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe5ff6ed1286a548880f2a25f1e8ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!21 &1868907079
+--- !u!21 &1633492898
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -554,6 +533,22 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!4 &1712032265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8529447977757377701, guid: 716ca60d1a566f444b7954c065f665fd, type: 3}
+  m_PrefabInstance: {fileID: 8529447978261057196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1729218235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5911656848163411037, guid: 160643ea810f0a54db2b1bcc7dcd0efd, type: 3}
+  m_PrefabInstance: {fileID: 7069332351760656103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe5ff6ed1286a548880f2a25f1e8ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &2092140323 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 6808698884390953456, guid: cdd9ddce136c69b449d98e7c0b519b88, type: 3}
@@ -669,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4317233371603010627, guid: cf2a5d4c7ae169143989eca3f69ee307, type: 3}
       propertyPath: playObjects.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4317233371603010627, guid: cf2a5d4c7ae169143989eca3f69ee307, type: 3}
       propertyPath: postObjects.Array.size
@@ -690,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 4317233371603010627, guid: cf2a5d4c7ae169143989eca3f69ee307, type: 3}
       propertyPath: playObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 191800679}
+      objectReference: {fileID: 0}
     - target: {fileID: 4317233371603010627, guid: cf2a5d4c7ae169143989eca3f69ee307, type: 3}
       propertyPath: postObjects.Array.data[0]
       value: 
@@ -808,11 +803,11 @@ PrefabInstance:
     - target: {fileID: 633652554199769557, guid: 160643ea810f0a54db2b1bcc7dcd0efd, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 181073327}
+      objectReference: {fileID: 37033289}
     - target: {fileID: 1492135731978934178, guid: 160643ea810f0a54db2b1bcc7dcd0efd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1868907079}
+      objectReference: {fileID: 1633492898}
     - target: {fileID: 2961274439118280752, guid: 160643ea810f0a54db2b1bcc7dcd0efd, type: 3}
       propertyPath: m_Name
       value: '[CameraRig]'
