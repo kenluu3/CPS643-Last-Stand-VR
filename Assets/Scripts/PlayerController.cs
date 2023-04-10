@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip takeDamageClip;
+    public AudioClip deathClip;
+    public Canvas deathUI;
 
     void Start()
     {
@@ -30,18 +32,24 @@ public class PlayerController : MonoBehaviour
     {
         if (intakeDamageTimer >= intakeDamageCooldown)
         {
-            health = Mathf.Clamp(health - damage, 0, maxHealth);
-            healthbarUI.updateHealthSize((float)health / maxHealth);
-            audioSource.PlayOneShot(takeDamageClip);
-
-            StartCoroutine(TakenDamageVisual());
-
-            if (health <= 0)
+            if (!isInvincible) 
             {
-                // Something to end the game here.
-            }
+                health = Mathf.Clamp(health - damage, 0, maxHealth);
+                healthbarUI.updateHealthSize((float)health / maxHealth);
 
-            intakeDamageTimer = 0.0f;
+                if (health <= 0)
+                {
+                    isInvincible = true; // player is dead.
+                    audioSource.PlayOneShot(deathClip);
+                    deathUI.gameObject.SetActive(true);
+                }
+                else
+                {
+                    audioSource.PlayOneShot(takeDamageClip);
+                    StartCoroutine(TakenDamageVisual());
+                    intakeDamageTimer = 0.0f;
+                }
+            }
         }
     }
 
@@ -52,16 +60,6 @@ public class PlayerController : MonoBehaviour
             takeDamage(10); // update this to enemy damage
         }
     }
-
-/*    
-     private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
-        {
-            // whatever damage here.
-        }
-    }
-*/
 
     IEnumerator TakenDamageVisual()
     {
