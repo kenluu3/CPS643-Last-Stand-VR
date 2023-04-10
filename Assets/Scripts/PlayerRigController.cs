@@ -36,7 +36,7 @@ public class PlayerRigController : MonoBehaviour
     private Animator animator;
     [SerializeField] private Vector3 footOffset = new Vector3(0, 15, 0);
 
-    void Awake()
+    void Start()
     {
         animator = GetComponent<Animator>();
         upperbodyOffset = transform.position - headConstraint.position;

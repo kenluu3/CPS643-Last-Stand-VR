@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     /* GameState Manager */
     public GameStateManager gameStateManager;
 
-    void Awake()
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
         takeDmgTimer = takeDmgCooldown;
@@ -63,14 +63,16 @@ public class PlayerController : MonoBehaviour
     /* Reset player to starting state */
     public void ResetState()
     {
+        takeDmgTimer = takeDmgCooldown;
         alive = true;
         hp = maxHP;
+        hpUI.UpdateHealthBarSize(1);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         /* Enemy || Enemy projectile layer collision */
-        if (other.gameObject.layer == 11 || other.gameObject.layer == 12) TakeDamage(10);
+        if (other.gameObject.layer == 11 || other.gameObject.layer == 12) TakeDamage(100);
     }
 
     /* Visual display indicating damage taken */

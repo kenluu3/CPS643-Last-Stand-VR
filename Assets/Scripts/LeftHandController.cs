@@ -23,7 +23,7 @@ public class LeftHandController : HandController
 
     /* Teleport timers */
     [SerializeField] private float tpCooldown = 1.5f;
-    [SerializeField] private float tpMagnitude = 5f;
+    [SerializeField] private float tpMagnitude = 6f;
     private float tpTimer;
 
     void Awake()
@@ -73,14 +73,15 @@ public class LeftHandController : HandController
 
         Vector3 direction = playerCamera.TransformDirection(new Vector3(move.axis.x, 0, move.axis.y));
         Vector3 target = playerRig.position + Vector3.ProjectOnPlane(direction * tpMagnitude, Vector3.up);
-        Vector3 offset = playerRig.position - target;
+        Vector3 offset = playerRig.position - playerCamera.position;
         offset.y = 0;
 
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.5f);
 
         playerRig.position = target + offset;
+
+        SteamVR_Fade.View(Color.clear, .5f);
         tpTimer = 0;
 
-        SteamVR_Fade.View(Color.clear, .25f);
     }
 }

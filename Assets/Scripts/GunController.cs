@@ -7,7 +7,7 @@ public class GunController : WeaponController
 {
     /* Gun barrel locations */
     [SerializeField] private int numBarrels = 2;
-    private Transform[] gunBarrels;
+    private Transform[] gunBarrels = new Transform[2];
 
     /* Gun fire parameters */
     [SerializeField] private float fireCooldown = .5f;

@@ -16,6 +16,11 @@ public class DummyStartObject : MonoBehaviour
         ResetState();
     }
 
+    private void OnEnable()
+    {
+        ResetState();
+    }
+
     void ResetState()
     {
         currentHits = 0;

@@ -9,7 +9,7 @@ public class PlayerRigAnimation : MonoBehaviour
     /* Audio player */
     private AudioSource audioSource;
 
-    void Awake()
+    void Start()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();

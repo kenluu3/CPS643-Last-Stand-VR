@@ -13,7 +13,7 @@ public abstract class WeaponController : MonoBehaviour
     /* Weapon damage */
     public int damage = 100;
 
-    void Awake()
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }

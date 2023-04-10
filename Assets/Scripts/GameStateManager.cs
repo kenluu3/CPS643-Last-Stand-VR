@@ -8,6 +8,7 @@ public class GameStateManager : MonoBehaviour
 {
     /* Player Parameters */
     [SerializeField] private Transform playerRig;
+    [SerializeField] private PlayerController playerController;
 
     /* GameObjects in each game state */
     [SerializeField] private GameObject preObjects; /* PreGame */
@@ -32,6 +33,9 @@ public class GameStateManager : MonoBehaviour
             preObjects.SetActive(true);
             enemySpawners.SetActive(false);
             deathObjects.SetActive(false);
+
+            playerRig.transform.position = Vector3.zero;
+            playerController.ResetState();
         }
         else if (state == GameState.PlayGame)
         {
@@ -41,6 +45,8 @@ public class GameStateManager : MonoBehaviour
         }
         else if (state == GameState.PostGame)
         {
+            playerRig.transform.position = Vector3.zero;
+
             preObjects.SetActive(false);
             enemySpawners.SetActive(false);
             deathObjects.SetActive(true);
