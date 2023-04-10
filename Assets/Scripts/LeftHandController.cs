@@ -5,72 +5,83 @@ using Valve.VR;
 
 public class LeftHandController : HandController
 {
-    public SteamVR_Action_Boolean fireGun;
-    public SteamVR_Action_Boolean teleportPlayer;
-    public SteamVR_Action_Vector2 movePlayer;
+    /* SteamVR Action Maps */
+    public SteamVR_Action_Boolean fire;
+    public SteamVR_Action_Boolean teleport;
+    public SteamVR_Action_Vector2 move;
 
+    /* Left hand-held weapon */
+    [SerializeField] private GameObject gun;
 
-    public PlayerRigAnimation playerRigAnimator;
-    public Transform gunTransform;
+    /* Transforms for player movement */
     public Transform playerRig;
     public Transform playerCamera;
-    private float moveSpeed = 2.0f;
+    public PlayerRigAnimation playerRigAnimator; 
 
-    private float elapsedTimeTeleport = 5.0f;
-    private float teleportCooldown = 1.5f;
+    /* Velocity for player movement */
+    [SerializeField] private float playerSpeed = 2f;
 
-    void Start()
+    /* Teleport timers */
+    [SerializeField] private float tpCooldown = 1.5f;
+    [SerializeField] private float tpMagnitude = 6f;
+    private float tpTimer;
+
+    void Awake()
     {
-        heldWeapon = gunTransform.gameObject;
-        fireGun.AddOnStateDownListener(OnFire, controller);
-        teleportPlayer.AddOnStateDownListener(OnTeleport, controller);
+        tpTimer = tpCooldown;
+        heldWeapon = gun;
+
+        /* Registering event handlers */
+        fire.AddOnStateDownListener(OnFire, controller);
+        teleport.AddOnStateDownListener(OnTeleport, controller);
     }
-    
+
     void Update()
     {
-        elapsedTimeTeleport += Time.deltaTime;
-    }
+        tpTimer += Time.deltaTime;
 
-    void FixedUpdate()
-    {
-        if (movePlayer.changed)
+        /* Detecting player movement */
+        if (move.changed)
         {
-            Vector3 movementDirection = playerCamera.TransformDirection(new Vector3(movePlayer.axis.x, 0, movePlayer.axis.y));
-            playerRig.position += Vector3.ProjectOnPlane(Time.deltaTime * movementDirection * moveSpeed, Vector3.up);
-            playerRigAnimator.playMoveAnimation(movementDirection);
+            Vector3 direction = playerCamera.TransformDirection(new Vector3(move.axis.x, 0, move.axis.y));
+            playerRig.position += Vector3.ProjectOnPlane(direction * playerSpeed * Time.deltaTime, Vector3.up);
+            playerRigAnimator.PlayMoveAnimation(direction);
         }
         else
         {
-            playerRigAnimator.stopMoveAnimation();
+            playerRigAnimator.StopMoveAnimation();
         }
     }
 
-    void OnTeleport(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
-    {
-        if (elapsedTimeTeleport >= teleportCooldown)
-        {
-            StartCoroutine(TeleportPlayer());
-        }
-    }
-
+    /* Handles gun firing */
     void OnFire(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
-        heldWeapon.GetComponent<GunController>().FireBullet();
+        heldWeapon.GetComponent<GunController>().FireGun();
         TriggerHaptics();
     }
 
+    /* Handles player teleportation */
+    void OnTeleport(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        if (tpTimer >= tpCooldown) StartCoroutine(TeleportPlayer());
+    }
+
+    /* Coroutine for teleportation */
     IEnumerator TeleportPlayer()
     {
-        SteamVR_Fade.View(Color.black, .75f);
-        Vector3 movementDir = playerCamera.TransformDirection(new Vector3(movePlayer.axis.x, 0, movePlayer.axis.y));
-        Vector3 target = playerRig.position + Vector3.ProjectOnPlane(movementDir * moveSpeed * 2.0f, Vector3.up);
+        SteamVR_Fade.View(Color.black, .5f);
+
+        Vector3 direction = playerCamera.TransformDirection(new Vector3(move.axis.x, 0, move.axis.y));
+        Vector3 target = playerRig.position + Vector3.ProjectOnPlane(direction * tpMagnitude, Vector3.up);
         Vector3 offset = playerRig.position - playerCamera.position;
         offset.y = 0;
 
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(.5f);
+
         playerRig.position = target + offset;
 
-        SteamVR_Fade.View(Color.clear, .75f);
-        elapsedTimeTeleport = 0.0f;
+        SteamVR_Fade.View(Color.clear, .5f);
+        tpTimer = 0;
+
     }
 }

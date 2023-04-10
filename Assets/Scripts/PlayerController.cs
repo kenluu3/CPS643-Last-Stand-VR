@@ -5,66 +5,90 @@ using Valve.VR;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] float intakeDamageCooldown = 1.5f;
+    /* Player parameters */
+    [SerializeField] private int hp = 100;
+    [SerializeField] private int maxHP = 100;
+    [SerializeField] private bool invinicible = false;
+    [SerializeField] private float takeDmgCooldown = 1.5f;
+    private float takeDmgTimer;
+    private bool alive = true;
 
-    public HealthbarUI healthbarUI;
-    public bool isInvincible = false;
-    private float intakeDamageTimer = 2.0f;
+    /* UI */
+    public HealthbarUI hpUI;
 
+    /* Audio */
     private AudioSource audioSource;
-    public AudioClip takeDamageClip;
-    public AudioClip deathClip;
-    public Canvas deathUI;
+    public AudioClip takeDamageAudio;
+    public AudioClip deathAudio;
+
+    /* GameState Manager */
+    public GameStateManager gameStateManager;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        takeDmgTimer = takeDmgCooldown;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        intakeDamageTimer += Time.deltaTime;
+        takeDmgTimer += Time.deltaTime;
     }
 
-    void takeDamage(int damage)
+    /* Update player health after taking damage */
+    void TakeDamage(int damage)
     {
-        if (intakeDamageTimer >= intakeDamageCooldown)
+        if (takeDmgTimer >= takeDmgCooldown && alive)
         {
-            if (!isInvincible) 
+            if (!invinicible)
             {
-                health = Mathf.Clamp(health - damage, 0, maxHealth);
-                healthbarUI.updateHealthSize((float)health / maxHealth);
+                hp = Mathf.Clamp(hp - damage, 0, maxHP);
+                hpUI.UpdateHealthBarSize((float)hp / maxHP);
+            }
 
-                if (health <= 0)
-                {
-                    isInvincible = true; // player is dead.
-                    audioSource.PlayOneShot(deathClip);
-                    deathUI.gameObject.SetActive(true);
-                }
-                else
-                {
-                    audioSource.PlayOneShot(takeDamageClip);
-                    StartCoroutine(TakenDamageVisual());
-                    intakeDamageTimer = 0.0f;
-                }
+            if (hp <= 0)
+            {
+                alive = false;
+                StartCoroutine(StartPlayerDeath());
+            }
+            else
+            {
+                audioSource.PlayOneShot(takeDamageAudio);
+                takeDmgTimer = 0f;
+                StartCoroutine(TakeDamageScreen());
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /* Reset player to starting state */
+    public void ResetState()
     {
-        if (other.gameObject.layer == 11 || other.gameObject.layer == 12)
-        {
-            takeDamage(10); // update this to enemy damage
-        }
+        takeDmgTimer = takeDmgCooldown;
+        alive = true;
+        hp = maxHP;
+        hpUI.UpdateHealthBarSize(1);
     }
 
-    IEnumerator TakenDamageVisual()
+    private void OnTriggerEnter(Collider other)
     {
-        SteamVR_Fade.View(new Color(1.0f, 0.0f, 0.0f, 0.5f), 0);
-        yield return new WaitForSeconds(.35f);
-        SteamVR_Fade.View(Color.clear, .35f);
+        /* Enemy || Enemy projectile layer collision */
+        if (other.gameObject.layer == 11 || other.gameObject.layer == 12) TakeDamage(100);
+    }
+
+    /* Visual display indicating damage taken */
+    IEnumerator TakeDamageScreen()
+    {
+        SteamVR_Fade.View(new Color(1f, 0, 0, .5f), .25f);
+        yield return new WaitForSeconds(.25f);
+        SteamVR_Fade.View(Color.clear, .25f);
+    }
+
+    IEnumerator StartPlayerDeath()
+    {
+        audioSource.PlayOneShot(deathAudio);
+        SteamVR_Fade.View(new Color(0, 0, 0, .75f), deathAudio.length / 2);
+        yield return new WaitForSeconds(deathAudio.length);
+        gameStateManager.UpdateGameState(GameState.PostGame);
+        SteamVR_Fade.View(Color.clear, .25f);
     }
 }

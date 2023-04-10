@@ -4,33 +4,39 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private float uptime = 1.5f;
-    private float bulletForce = 35.0f;
-    [SerializeField] private int bulletDamage = 50;
-    private Rigidbody rb;
+    /* Bullet parameters */
+    [SerializeField] private float upTime = 1.5f;
+    [SerializeField] private float force = 35f;
+    public int damage = 50;
 
+    /* Particle system explosion effect */
     public GameObject explosionPrefab;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);
     }
 
     void Update()
     {
-        uptime -= Time.deltaTime;
-        if (uptime <= 0.0f) Destroy(gameObject);
+        upTime -= Time.deltaTime;
+        if (upTime <= 0f) Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 11) // Enemy Layer
+        /* Enemy || Dummy Layer Hit */
+        if (collision.gameObject.layer == 11 || collision.gameObject.layer == 13)
         {
-            EnemyController enemyObj = collision.gameObject.GetComponent<EnemyController>();
-            enemyObj.TakeDamage(bulletDamage);
+            /* Enemy Layer 11 */
+            if (collision.gameObject.GetComponent<EnemyController>())
+            {
+                EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+                enemy.TakeDamage(damage);
+            }
 
             GameObject explosion = Instantiate(explosionPrefab);
+            explosion.tag = "Clone";
             explosion.transform.position = transform.position;
             explosion.GetComponent<ParticleSystem>().Play();
 

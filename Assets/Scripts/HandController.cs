@@ -5,12 +5,18 @@ using Valve.VR;
 
 public abstract class HandController : MonoBehaviour
 {
+    /* SteamVR Action Maps */
     public SteamVR_Action_Vibration haptics;
-    public SteamVR_Input_Sources controller;    
+
+    /* VR Input Controller */
+    public SteamVR_Input_Sources controller;
+
+    /* Weapon in hand */
     protected GameObject heldWeapon;
 
-    public void TriggerHaptics()
+    /* Triggers haptic feedback on the specified controller */
+    public void TriggerHaptics(float secondsFromNow = 0f, float duration = .5f, float freq = 1f, float amp = 5f)
     {
-        haptics.Execute(0, .5f, 1.0f, 5.0f, controller);
+        haptics.Execute(secondsFromNow, duration, freq, amp, controller);
     }
 }
