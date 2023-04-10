@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class CalibratePlayerHeight : MonoBehaviour
@@ -7,19 +10,19 @@ public class CalibratePlayerHeight : MonoBehaviour
     [SerializeField] private float calibrationTime = 3.0f;
     private PlayerRigController playerRig;
     public Transform floor;
+    public Canvas calibrationUI;
 
-    void Awake()
+    void Start()
     {
         playerRig = GetComponent<PlayerRigController>();
+        StartCoroutine(CalibrateFloor());
     }
 
-    void Update()
+    IEnumerator CalibrateFloor()
     {
-        calibrationTime -= Time.deltaTime;
-        if (calibrationTime < 0)
-        {
-            floor.position = new Vector3(floor.position.x, playerRig.transform.position.y, floor.position.z);
-            enabled = false;
-        }
+        yield return new WaitForSeconds(calibrationTime);
+        floor.position = new Vector3(floor.position.x, playerRig.transform.position.y, floor.position.z);
+        transform.position = Vector3.zero;
+        Destroy(calibrationUI.gameObject);
     }
 }
