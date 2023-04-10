@@ -3,74 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class VRMap
+public class VRToRIGMapper
 {
+    /* VR Target is the controlling device */
     public Transform VRTarget;
-    public Transform RigTarget;
+    /* RIG Target is the RIG (bodypart) constraint */
+    public Transform RIGTarget;
 
-    public Vector3 trackingPositionOffset;
-    public Vector3 trackingRotationOffset;
+    /* Offsets between tracking and RIG */
+    public Vector3 positionOffset;
+    public Vector3 rotationOffset;
 
-    public void MapToPlayerRig()
+    public void MapToRIG()
     {
-        RigTarget.position = VRTarget.TransformPoint(trackingPositionOffset);
-        RigTarget.rotation = VRTarget.rotation * Quaternion.Euler(trackingRotationOffset);
+        RIGTarget.position = VRTarget.TransformPoint(positionOffset);
+        RIGTarget.rotation = VRTarget.rotation * Quaternion.Euler(rotationOffset);
     }
 }
 
 public class PlayerRigController : MonoBehaviour
 {
-    // Upper body
-    public VRMap headIK;
-    public VRMap leftArmIK;
-    public VRMap rightArmIK;
+    /* Upperbody Constraints */
+    public VRToRIGMapper head;
+    public VRToRIGMapper leftArm;
+    public VRToRIGMapper rightArm;
     public Transform headConstraint;
-    [SerializeField] private Vector3 upperOffset; // To align body correctly.
-    [SerializeField] private float smoothingFactor;
+    /* Head-to-Body alignment */
+    [SerializeField] private Vector3 upperbodyOffset;
+    [SerializeField] private float smoothing = 5f;
 
-    // Lower body
+    /* Lowerbody Constraints via Animation */
     private Animator animator;
-    [SerializeField] private Vector3 footOffset;
-
-    // Calibrated player height.
-    private float maxHeight;
-    private float minHeight;
+    [SerializeField] private Vector3 footOffset = new Vector3(0, 15, 0);
 
     void Awake()
     {
         animator = GetComponent<Animator>();
-        upperOffset = transform.position - headConstraint.position;
+        upperbodyOffset = transform.position - headConstraint.position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * smoothingFactor);
-        transform.position = upperOffset + headConstraint.position;
+        transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * smoothing);
+        transform.position = upperbodyOffset + headConstraint.position;
 
-        leftArmIK.MapToPlayerRig();
-        rightArmIK.MapToPlayerRig();
-        headIK.MapToPlayerRig();
+        head.MapToRIG();
+        leftArm.MapToRIG();
+        rightArm.MapToRIG();
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
         AvatarIKGoal[] foot = new AvatarIKGoal[] { AvatarIKGoal.LeftFoot, AvatarIKGoal.RightFoot };
-        foreach (AvatarIKGoal goal in foot)
-        {
-            Vector3 footPos = animator.GetIKPosition(goal); // Checking where the feet is wrt to ground.
 
+        foreach(AvatarIKGoal footGoal in foot)
+        {
+            Vector3 position = animator.GetIKPosition(footGoal);
+            /* Raycast to detect ground */
             RaycastHit hit;
-            if (Physics.Raycast(footPos + Vector3.up, Vector3.down, out hit))
+            if (Physics.Raycast(position + Vector3.up, Vector3.down, out hit))
             {
-                animator.SetIKPosition(goal, hit.point + footOffset);
-                animator.SetIKPositionWeight(goal, 1);
-                animator.SetIKRotation(goal, Quaternion.LookRotation(Vector3.ProjectOnPlane(transform.forward, hit.normal), hit.normal));
-                animator.SetIKRotationWeight(goal, 1);
+                animator.SetIKPosition(footGoal, hit.point + footOffset);
+                animator.SetIKPositionWeight(footGoal, 1);
+                animator.SetIKRotation(footGoal, Quaternion.LookRotation(Vector3.ProjectOnPlane(transform.forward, hit.normal), hit.normal));
+                animator.SetIKRotationWeight(footGoal, 1);
             }
             else
             {
-                animator.SetIKPositionWeight(goal, 0);
-                animator.SetIKRotationWeight(goal, 0);
+                animator.SetIKPositionWeight(footGoal, 0);
+                animator.SetIKRotationWeight(footGoal, 0);
             }
         }
     }

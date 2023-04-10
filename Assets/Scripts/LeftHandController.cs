@@ -45,11 +45,11 @@ public class LeftHandController : HandController
         {
             Vector3 direction = playerCamera.TransformDirection(new Vector3(move.axis.x, 0, move.axis.y));
             playerRig.position += Vector3.ProjectOnPlane(direction * playerSpeed * Time.deltaTime, Vector3.up);
-            playerRigAnimator.playMoveAnimation(direction);
+            playerRigAnimator.PlayMoveAnimation(direction);
         }
         else
         {
-            playerRigAnimator.stopMoveAnimation();
+            playerRigAnimator.StopMoveAnimation();
         }
     }
 

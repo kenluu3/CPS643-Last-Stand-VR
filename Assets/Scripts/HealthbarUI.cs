@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class HealthbarUI : MonoBehaviour
 {
-    public Image healthBarMask;
+    /* HP bar UI */
+    [SerializeField] private Image healthBarMask;
     private float healthBarSize;
 
-    void Start()
+    void Awake()
     {
         healthBarSize = healthBarMask.rectTransform.rect.width;
     }
 
-    public void updateHealthSize(float change)
+    public void UpdateHealthBarSize(float size)
     {
-        healthBarMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Clamp(healthBarSize * change, 0, healthBarSize));
+        healthBarMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Clamp(healthBarSize * size, 0, healthBarSize));
     }
 }
