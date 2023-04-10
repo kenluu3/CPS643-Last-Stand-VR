@@ -45,6 +45,14 @@ public class GameStateManager : MonoBehaviour
         }
         else if (state == GameState.PostGame)
         {
+            /* Cleanup post game */
+            GameObject[] cloneObjects = GameObject.FindGameObjectsWithTag("Clone");
+
+            foreach (GameObject obj in cloneObjects)
+            {
+                Destroy(obj.gameObject);
+            }
+
             playerRig.transform.position = Vector3.zero;
 
             preObjects.SetActive(false);

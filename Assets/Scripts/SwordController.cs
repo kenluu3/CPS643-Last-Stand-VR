@@ -15,6 +15,7 @@ public class SwordController : WeaponController
         if (collision.gameObject.layer == 11 || collision.gameObject.layer == 13)
         {
             GameObject slashEffect = Instantiate(slashPrefab, transform.parent);
+            slashEffect.tag = "Clone";
             slashEffect.transform.localRotation = Quaternion.Euler(180f, 0, 0);
             slashEffect.transform.SetParent(null);
             slashEffect.transform.position = collision.contacts[0].point;

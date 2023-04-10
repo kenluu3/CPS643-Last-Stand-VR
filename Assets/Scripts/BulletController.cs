@@ -36,6 +36,7 @@ public class BulletController : MonoBehaviour
             }
 
             GameObject explosion = Instantiate(explosionPrefab);
+            explosion.tag = "Clone";
             explosion.transform.position = transform.position;
             explosion.GetComponent<ParticleSystem>().Play();
 

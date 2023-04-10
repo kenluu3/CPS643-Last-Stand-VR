@@ -48,6 +48,7 @@ public class GunController : WeaponController
             {
                 bullets[i].transform.position = gunBarrels[i].transform.position;
                 bullets[i].transform.rotation = gunBarrels[i].transform.rotation;
+                bullets[i].tag = "Clone";
             }
 
             audioSource.PlayOneShot(fireAudio);
