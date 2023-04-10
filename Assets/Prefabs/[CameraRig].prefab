@@ -1181,6 +1181,7 @@ Transform:
   - {fileID: 3217290681209605175}
   - {fileID: 4942084229078195348}
   - {fileID: 7069332353109873963}
+  - {fileID: 8233897560962834745}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1360,6 +1361,11 @@ MonoBehaviour:
   playerSpeed: 2
   tpCooldown: 1.5
   tpMagnitude: 5
+  boundaries:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &2998074421629309420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1397,37 @@ Transform:
   - {fileID: 1750327533964199317}
   m_Father: {fileID: 8656026582437648364}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3008995430159864458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8233897560962834745}
+  m_Layer: 0
+  m_Name: BGMPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8233897560962834745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008995430159864458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7069332353092898025}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3093519078778290774
 GameObject:

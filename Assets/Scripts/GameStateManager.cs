@@ -15,10 +15,13 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject enemySpawners; /* PlayGame */
     [SerializeField] private GameObject deathObjects; /* PostGame */
 
+    /* BGM AudioManager */
+    [SerializeField] private BGMPlayer bgmPlayer;
+
     /* Current game state */
     private GameState state;
 
-    void Awake()
+    void Start()
     {
         state = GameState.PreGame;
         UpdateGameState(state);
@@ -59,5 +62,7 @@ public class GameStateManager : MonoBehaviour
             enemySpawners.SetActive(false);
             deathObjects.SetActive(true);
         }
+
+        bgmPlayer.PlayBGM(state);
     }
 }
