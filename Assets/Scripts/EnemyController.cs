@@ -56,11 +56,6 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-/*    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }*/
-
     private void OnDestroy()
     {
         if (spawner != null)

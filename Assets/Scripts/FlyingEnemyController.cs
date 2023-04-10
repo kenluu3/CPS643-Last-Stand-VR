@@ -23,7 +23,6 @@ public class FlyingEnemyController : EnemyController
 
     protected override void Attack()
     {
-        //agent.SetDestination(transform.position);
         transform.LookAt(player);
 
         if (playerInAttackRange && !attacked)

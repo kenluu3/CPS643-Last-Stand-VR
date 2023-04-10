@@ -15,9 +15,11 @@ public class GroundEnemyController : EnemyController
         if (!attacked)
         {
             Rigidbody rb = Instantiate(projectile, cannonTransform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            Vector3 direction = player.position - cannonTransform.position;
-            direction += Vector3.up;
-            rb.AddForce(direction.normalized * 32f, ForceMode.Impulse);
+            Quaternion rotation = Quaternion.LookRotation(player.position - cannonTransform.position);
+            Vector3 right = Vector3.Cross(Vector3.up, rotation * Vector3.forward).normalized;
+            rotation *= Quaternion.AngleAxis(5f, right);
+            rb.transform.rotation = rotation;
+            rb.AddForce(rb.transform.forward * 32f, ForceMode.Impulse);
 
             attacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);

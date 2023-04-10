@@ -71,8 +71,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /* Enemy || Enemy projectile layer collision */
-        if (other.gameObject.layer == 11 || other.gameObject.layer == 12) TakeDamage(100);
+        /* Adam enemy arm || Enemy projectile layer collision */
+        if (other.gameObject.layer == 14 || other.gameObject.layer == 12)
+        {
+            Debug.Log("hit" + other.gameObject.layer);
+            TakeDamage(10);
+        }
     }
 
     /* Visual display indicating damage taken */

@@ -5029,7 +5029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4315063062598885971}
   - component: {fileID: 4315063062593451421}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: mesh_Adam_RSleeve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7826,8 +7826,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.8, z: 0.5}
-  m_Center: {x: 0, y: 0.95, z: 0}
+  m_Size: {x: 0.5, y: 1.82, z: 0.3}
+  m_Center: {x: 0, y: 0.9, z: 0.03}
 --- !u!114 &4315063062598762037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7852,7 +7852,7 @@ MonoBehaviour:
   dead: 0
   attackCooldown: 3
   attacked: 0
-  attackRange: 1.5
+  attackRange: 1
   playerInAttackRange: 0
   spawner: {fileID: 0}
 --- !u!195 &4315063062598762038
