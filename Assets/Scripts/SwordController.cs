@@ -10,10 +10,13 @@ public class SwordController : WeaponController
     {
         if (collision.gameObject.layer == 11)
         {
+            GameObject slashEffect = Instantiate(slashPrefab, transform.parent);
+            slashEffect.transform.localRotation = Quaternion.Euler(180, 0, 0);
+            slashEffect.transform.SetParent(null);
+            slashEffect.transform.position = collision.contacts[0].point;
+
             base.OnCollisionEnter(collision);
 
-            GameObject slashEffect = Instantiate(slashPrefab);
-            slashEffect.transform.position = collision.contacts[0].point;
             slashEffect.GetComponent<ParticleSystem>().Play();
         }
     }

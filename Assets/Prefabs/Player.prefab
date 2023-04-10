@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentController: {fileID: 0}
   weaponDamage: 100
-  slashPrefab: {fileID: 4787046200056488066, guid: b798498b4bd9608448d9728a264a57f2, type: 3}
+  slashPrefab: {fileID: 4939618495932978321, guid: b798498b4bd9608448d9728a264a57f2, type: 3}
 --- !u!1 &2283978774810700972
 GameObject:
   m_ObjectHideFlags: 0
