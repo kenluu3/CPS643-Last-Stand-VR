@@ -2,30 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum GameState { PreGame, PlayGame, PostGame };
+public enum GameState { PreGame, PlayGame, PostGame };
 
 public class GameStateManager : MonoBehaviour
 {
-    public PlayerController player;
-    public PlayerRigController playerRig;
-    public GameObject spawners;
-    public GameObject deathArea;
-    public GameObject startGame;
-    
-    private GameState gameState;
+    /* Player Parameters */
+    [SerializeField] private Transform playerRig;
 
-    void Start()
+    /* GameObjects in each game state */
+    [SerializeField] private GameObject preObjects; /* PreGame */
+    [SerializeField] private GameObject enemySpawners; /* PlayGame */
+    [SerializeField] private GameObject deathObjects; /* PostGame */
+
+    /* Current game state */
+    private GameState state;
+
+    void Awake()
     {
-        gameState = GameState.PreGame;
+        state = GameState.PreGame;
+        UpdateGameState(state);
     }
 
-    void Update()
+    public void UpdateGameState(GameState newState)
     {
-        if (startGame.transform.Find("Dummy").gameObject.activeSelf == false)
+        state = newState;
+
+        if (state == GameState.PreGame)
         {
-            gameState = GameState.PlayGame;
-            startGame.SetActive(false);
-            spawners.SetActive(true);
+            preObjects.SetActive(true);
+            enemySpawners.SetActive(false);
+            deathObjects.SetActive(false);
+        }
+        else if (state == GameState.PlayGame)
+        {
+            preObjects.SetActive(false);
+            enemySpawners.SetActive(true);
+            deathObjects.SetActive(false);
+        }
+        else if (state == GameState.PostGame)
+        {
+            preObjects.SetActive(false);
+            enemySpawners.SetActive(false);
+            deathObjects.SetActive(true);
         }
     }
 }

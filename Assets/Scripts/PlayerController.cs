@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /* Reset player to starting state */
-    public void resetState()
+    public void ResetState()
     {
         alive = true;
         hp = maxHP;
@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(deathAudio);
         SteamVR_Fade.View(new Color(0, 0, 0, .75f), deathAudio.length / 2);
         yield return new WaitForSeconds(deathAudio.length);
-        // Something here with GameStateManager.
+        gameStateManager.UpdateGameState(GameState.PostGame);
+        SteamVR_Fade.View(Color.clear, .25f);
     }
 }

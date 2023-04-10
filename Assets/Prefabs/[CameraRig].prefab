@@ -944,8 +944,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentController: {fileID: 5900146572106821113}
-  weaponDamage: 100
-  fireSound: {fileID: 8300000, guid: 9afd6cc7134a3428cb7606e918101f8f, type: 3}
+  damage: 100
+  numBarrels: 2
+  fireCooldown: 0.5
+  fireAudio: {fileID: 0}
   bulletPrefab: {fileID: 451690102434695463, guid: 8ecc7f6262417924bae291b71ab2bd74, type: 3}
 --- !u!1 &2210467715065745878
 GameObject:
@@ -1024,14 +1026,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6e337c422d85b428b08aa74353980a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 70
-  maxHealth: 100
-  intakeDamageCooldown: 2
-  healthbarUI: {fileID: 802593547125236853}
-  isInvincible: 0
-  takeDamageClip: {fileID: 8300000, guid: a6f2b3f9c3a87924ba64fd5fb334ff66, type: 3}
-  deathClip: {fileID: 8300000, guid: 1a74e78095835ff46bb65baacaa7be6e, type: 3}
-  deathUI: {fileID: 0}
+  hp: 100
+  maxHP: 100
+  invinicible: 0
+  takeDmgCooldown: 1.5
+  hpUI: {fileID: 0}
+  takeDamageAudio: {fileID: 0}
+  deathAudio: {fileID: 0}
+  gameStateManager: {fileID: 0}
 --- !u!82 &6086949572161090985
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1229,7 +1231,6 @@ GameObject:
   - component: {fileID: 7112575155711170122}
   - component: {fileID: 1613648564830821199}
   - component: {fileID: 4536764113968533502}
-  - component: {fileID: 8261582117225623825}
   - component: {fileID: 7134052764648597200}
   m_Layer: 10
   m_Name: Player
@@ -1305,24 +1306,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5a7b8eba408ab4d86aabcbda43f84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headIK:
-    VRTarget: {fileID: 340547051687373060}
-    RigTarget: {fileID: 7170519885044716355}
-    trackingPositionOffset: {x: 0, y: -0.24, z: -0.12}
-    trackingRotationOffset: {x: 180, y: 90, z: 90}
-  leftArmIK:
-    VRTarget: {fileID: 5835918216672855088}
-    RigTarget: {fileID: 7776587775306793858}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: -90, y: 90, z: 0}
-  rightArmIK:
-    VRTarget: {fileID: 7847630994359216134}
-    RigTarget: {fileID: 3049916684372076486}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 90, y: -90, z: 0}
+  head:
+    VRTarget: {fileID: 0}
+    RIGTarget: {fileID: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  leftArm:
+    VRTarget: {fileID: 0}
+    RIGTarget: {fileID: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  rightArm:
+    VRTarget: {fileID: 0}
+    RIGTarget: {fileID: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
   headConstraint: {fileID: 7170519885044716355}
-  upperOffset: {x: 0, y: 0, z: 0}
-  smoothingFactor: 5
+  upperbodyOffset: {x: 0, y: 0, z: 0}
+  smoothing: 5
   footOffset: {x: 0, y: 0.13, z: 0}
 --- !u!114 &1613648564830821199
 MonoBehaviour:
@@ -1404,20 +1405,6 @@ MonoBehaviour:
   - {fileID: 2041690230959760759}
   - {fileID: 4795073799859946828}
   - {fileID: 550999491691080579}
---- !u!114 &8261582117225623825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2560219069801678780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6530839edc2de845ab04febd0182cc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  calibrationTime: 3
-  floor: {fileID: 0}
 --- !u!82 &7134052764648597200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2342,19 +2329,22 @@ MonoBehaviour:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
   controller: 1
-  fireGun:
-    actionPath: /actions/default/in/FireGun
+  fire:
+    actionPath: 
     needsReinit: 0
-  teleportPlayer:
-    actionPath: /actions/default/in/PlayerTeleport
+  teleport:
+    actionPath: 
     needsReinit: 0
-  movePlayer:
-    actionPath: /actions/default/in/MovePlayer
+  move:
+    actionPath: 
     needsReinit: 0
-  playerRigAnimator: {fileID: 1613648564830821199}
-  gunTransform: {fileID: 9166316086149544335}
+  gun: {fileID: 0}
   playerRig: {fileID: 3171045086882369422}
   playerCamera: {fileID: 340547051687373060}
+  playerRigAnimator: {fileID: 1613648564830821199}
+  playerSpeed: 2
+  tpCooldown: 1.5
+  tpMagnitude: 5
 --- !u!1 &5387694539960032435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,7 +2999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentController: {fileID: 226366101045488294}
-  weaponDamage: 100
+  damage: 100
   slashPrefab: {fileID: 4939618495932978321, guid: b798498b4bd9608448d9728a264a57f2, type: 3}
 --- !u!1 &6405353797846833323
 GameObject:
@@ -3295,7 +3285,7 @@ MonoBehaviour:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
   controller: 2
-  swordTransform: {fileID: 7112891870591195230}
+  sword: {fileID: 0}
 --- !u!1 &7825781572102017624
 GameObject:
   m_ObjectHideFlags: 0
