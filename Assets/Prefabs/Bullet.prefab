@@ -128,4 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 50
-  explosionPrefab: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
+  explosionPrefab: {fileID: 1164484534010442821, guid: dd8d59a012746f048a4b05f098d49c2f, type: 3}
