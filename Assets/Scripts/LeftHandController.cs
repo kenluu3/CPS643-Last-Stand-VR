@@ -27,9 +27,9 @@ public class LeftHandController : HandController
     private float tpTimer;
 
     /* Movement Boundaries: MinX, MaxX, MinZ, MaxZ */
-    public float[] boundaries = new float[4] { -1000f, 1000f, 0, 1000f };
+    private float[] boundaries = new float[4];
 
-    void Awake()
+    void Start()
     {
         tpTimer = tpCooldown;
         heldWeapon = gun;
@@ -56,6 +56,15 @@ public class LeftHandController : HandController
         }
     }
 
+    /* Updates movement boundaries for player */
+    public void UpdateMovementBoundaries(float minX, float maxX, float minZ, float maxZ)
+    {
+        boundaries[0] = minX;
+        boundaries[1] = maxX;
+        boundaries[2] = minZ;
+        boundaries[3] = maxZ;
+    }
+
     /* Handles gun firing */
     void OnFire(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
@@ -73,10 +82,9 @@ public class LeftHandController : HandController
     Vector3 FinalMovePosition(Vector3 direction, float magnitude, Vector3 offset)
     {
         Vector3 target = playerRig.position + Vector3.ProjectOnPlane(direction * magnitude, Vector3.up);
-        
-        //target.x = Mathf.Clamp(target.x, boundaries[0], boundaries[1]);
-        //target.z = Mathf.Clamp(target.z, boundaries[2], boundaries[3]);
-        //Debug.Log(target + " " + magnitude + " " + direction);
+
+        target.x = Mathf.Clamp(target.x, boundaries[0], boundaries[1]);
+        target.z = Mathf.Clamp(target.z, boundaries[2], boundaries[3]);
 
         return target + offset;
     }
@@ -96,6 +104,5 @@ public class LeftHandController : HandController
 
         SteamVR_Fade.View(Color.clear, .5f);
         tpTimer = 0;
-
     }
 }
