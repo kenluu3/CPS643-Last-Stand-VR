@@ -50,9 +50,19 @@ public class EnemyWaveManager : MonoBehaviour
 
     public void StartNewWave()
     {
-        foreach (EnemySpawnerController spawner in spawners)
+        if (allSpawnersRegistered)
         {
-            spawner.StartNewWave(enemyPrefabs, enemiesPerSpawner);
+            foreach (EnemySpawnerController spawner in spawners)
+            {
+                spawner.StartNewWave(enemyPrefabs, enemiesPerSpawner);
+            }
         }
+    }
+
+    private void OnDisable()
+    {
+        spawners.Clear();
+        allSpawnersRegistered = false;
+        numActiveSpawners = 0;
     }
 }

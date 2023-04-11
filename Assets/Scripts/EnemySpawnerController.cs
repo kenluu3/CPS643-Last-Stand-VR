@@ -9,11 +9,6 @@ public class EnemySpawnerController : MonoBehaviour
 
     private List<GameObject> enemies = new List<GameObject>();
 
-    private void Start()
-    {
-        EnemyWaveManager.instance.RegisterSpawner(this);
-    }
-
     public void StartNewWave(GameObject[] enemyPrefabs, int enemiesPerSpawner)
     {
         enemies.Clear();
@@ -28,7 +23,9 @@ public class EnemySpawnerController : MonoBehaviour
             GameObject enemyPrefab = enemyPrefabs[randomEnemyIndex];
             Vector3 enemySpawnPosition;
             enemySpawnPosition = new Vector3(transform.position.x, enemyPrefab.transform.position.y, transform.position.z);
-            GameObject enemy = Instantiate(enemyPrefab, enemySpawnPosition, transform.rotation);
+            GameObject enemy = Instantiate(enemyPrefab);
+            enemy.transform.position = enemySpawnPosition;
+            enemy.tag = "Clone";
             enemies.Add(enemy);
 
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
@@ -44,5 +41,10 @@ public class EnemySpawnerController : MonoBehaviour
         {
             EnemyWaveManager.instance.ResetSpawner();
         }
+    }
+
+    private void OnEnable()
+    {
+        EnemyWaveManager.instance.RegisterSpawner(this);
     }
 }

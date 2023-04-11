@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool invinicible = false;
     [SerializeField] private float takeDmgCooldown = 1.5f;
     private float takeDmgTimer;
-    private bool alive = true;
+    public bool alive = true;
 
     /* UI */
     public HealthbarUI hpUI;
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /* Update player health after taking damage */
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (takeDmgTimer >= takeDmgCooldown && alive)
         {
@@ -71,8 +71,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /* Enemy || Enemy projectile layer collision */
-        if (other.gameObject.layer == 11 || other.gameObject.layer == 12) TakeDamage(100);
+        /* Adam enemy arm || Enemy projectile layer collision */
+        if (other.gameObject.layer == 12)
+        {
+            TakeDamage(10);
+        }
     }
 
     /* Visual display indicating damage taken */

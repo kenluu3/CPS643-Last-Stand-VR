@@ -15,8 +15,8 @@ public abstract class EnemyController : MonoBehaviour
     public float attackCooldown;
     public bool attacked;
 
-    public float attackRange;
     public bool playerInAttackRange;
+    public float attackRange;
 
     public EnemySpawnerController spawner;
 
@@ -55,11 +55,6 @@ public abstract class EnemyController : MonoBehaviour
             Invoke(nameof(DestroyEnemy), 0.5f);
         }
     }
-
-/*    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }*/
 
     private void OnDestroy()
     {
