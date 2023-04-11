@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class MeleeEnemyController : EnemyController
 {
     private Animator animator;
+    private PlayerController playerController;
     void Start()
     {
         animator = GetComponent<Animator>();
+        playerController = FindObjectOfType<PlayerController>();
+
     }
 
     protected override void Attack()
@@ -20,8 +23,12 @@ public class MeleeEnemyController : EnemyController
         if (!attacked)
         {
             attacked = true;
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("Attack"))
+            {
+                playerController.TakeDamage(10);
+            }
             Invoke(nameof(ResetAttack), attackCooldown);
-
         }
     }
 
