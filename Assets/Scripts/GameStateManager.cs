@@ -31,7 +31,7 @@ public class GameStateManager : MonoBehaviour
     public void UpdateGameState(GameState newState)
     {
         state = newState;
-        leftHandController.UpdateMovementBoundaries(-50f, 50f, 0, 50f); /* Default Standard Boundaries */
+        leftHandController.UpdateMovementBoundaries(-50f, 50f, -50f, 50f); /* Default Standard Boundaries */
 
         if (state == GameState.PreGame)
         {

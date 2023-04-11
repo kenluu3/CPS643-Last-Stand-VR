@@ -28,7 +28,7 @@ public class MeleeEnemyController : EnemyController
             {
                 playerController.TakeDamage(10);
             }
-            Invoke(nameof(ResetAttack), attackCooldown);
+            Invoke(nameof(ResetAttack), stateInfo.length);
         }
     }
 
