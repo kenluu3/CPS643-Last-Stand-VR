@@ -11,7 +11,7 @@ public abstract class WeaponController : MonoBehaviour
     protected AudioSource audioSource;
 
     /* Weapon damage */
-    public int damage = 100;
+    public int damage = 150;
 
     void Start()
     {

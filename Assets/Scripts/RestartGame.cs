@@ -13,6 +13,7 @@ public class RestartGame : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             gameStateManager.UpdateGameState(GameState.PreGame);
+            EnemySpawnerController.enemiesKilled = 0;
         }
     }
 }

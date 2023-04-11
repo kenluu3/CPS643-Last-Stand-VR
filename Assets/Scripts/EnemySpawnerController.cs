@@ -6,6 +6,7 @@ public class EnemySpawnerController : MonoBehaviour
 {
     public float spawnInterval;
     public int enemiesPerSpawner;
+    public static int enemiesKilled;
 
     private List<GameObject> enemies = new List<GameObject>();
 
@@ -19,7 +20,22 @@ public class EnemySpawnerController : MonoBehaviour
     {
         for (int i = 0; i < enemiesPerSpawner; i++)
         {
-            int randomEnemyIndex = Random.Range(0, enemyPrefabs.Length);
+            // 2 index: adam, 1 index: flying, 0 index: mech
+            float randomIndexTemp = Random.Range(0f, (float)enemyPrefabs.Length);
+            int randomEnemyIndex;
+            if (randomIndexTemp >= 1.0)
+            {
+                randomEnemyIndex = 2;
+            }
+            else if (randomIndexTemp > 0.5)
+            {
+                randomEnemyIndex = 1;
+            }
+            else
+            {
+                randomEnemyIndex = 0;
+            }
+
             GameObject enemyPrefab = enemyPrefabs[randomEnemyIndex];
             Vector3 enemySpawnPosition;
             enemySpawnPosition = new Vector3(transform.position.x, enemyPrefab.transform.position.y, transform.position.z);
@@ -37,6 +53,7 @@ public class EnemySpawnerController : MonoBehaviour
     public void RemoveEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
+        enemiesKilled++;
         if (enemies.Count == 0 && EnemyWaveManager.allSpawnersRegistered)
         {
             EnemyWaveManager.instance.ResetSpawner();
