@@ -105,7 +105,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  health: 100
+  health: 50
   dead: 0
   attackCooldown: 4
   attacked: 0
