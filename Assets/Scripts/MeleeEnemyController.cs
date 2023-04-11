@@ -11,7 +11,6 @@ public class MeleeEnemyController : EnemyController
     {
         animator = GetComponent<Animator>();
         playerController = FindObjectOfType<PlayerController>();
-
     }
 
     protected override void Attack()

@@ -12,7 +12,6 @@ public class FlyingEnemyController : EnemyController
     public GameObject laserPrefab;
     public Transform laserSpawnPoint;
 
-
     protected override void Update()
     {
         float hoverOffset = Mathf.Sin(Time.time * hoverSpeed) * hoverHeight;
@@ -29,10 +28,11 @@ public class FlyingEnemyController : EnemyController
         {
             attacked = true;
 
-            // look for line renderer code instead from lab 2
             GameObject laser = Instantiate(laserPrefab, laserSpawnPoint.position, Quaternion.identity);
-            Vector3 direction = (player.position - transform.position).normalized;
-            laser.transform.rotation = Quaternion.LookRotation(direction);
+            Quaternion rotation = Quaternion.LookRotation(player.position - laserSpawnPoint.position);
+            Vector3 right = Vector3.Cross(Vector3.up, rotation * Vector3.forward).normalized;
+            rotation *= Quaternion.AngleAxis(4.0f, right);
+            laser.transform.rotation = rotation;
 
             Destroy(laser, laserLifetime);
             Invoke(nameof(ResetAttack), attackCooldown);

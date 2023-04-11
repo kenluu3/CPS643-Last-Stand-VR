@@ -15,8 +15,8 @@ public abstract class EnemyController : MonoBehaviour
     public float attackCooldown;
     public bool attacked;
 
-    public float attackRange;
     public bool playerInAttackRange;
+    public float attackRange;
 
     public EnemySpawnerController spawner;
 

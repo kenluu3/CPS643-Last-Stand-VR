@@ -23,7 +23,8 @@ public class EnemySpawnerController : MonoBehaviour
             GameObject enemyPrefab = enemyPrefabs[randomEnemyIndex];
             Vector3 enemySpawnPosition;
             enemySpawnPosition = new Vector3(transform.position.x, enemyPrefab.transform.position.y, transform.position.z);
-            GameObject enemy = Instantiate(enemyPrefab, enemySpawnPosition, transform.rotation);
+            GameObject enemy = Instantiate(enemyPrefab);
+            enemy.transform.position = enemySpawnPosition;
             enemy.tag = "Clone";
             enemies.Add(enemy);
 
