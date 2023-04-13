@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         audioSource.PlayOneShot(deathAudio);
         SteamVR_Fade.View(new Color(0, 0, 0, .75f), deathAudio.length / 2);
+        SteamVR_Fade.View(Color.black, deathAudio.length / 2);
         yield return new WaitForSeconds(deathAudio.length);
         gameStateManager.UpdateGameState(GameState.PostGame);
         SteamVR_Fade.View(Color.clear, .25f);
