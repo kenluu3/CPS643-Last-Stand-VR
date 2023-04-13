@@ -15,12 +15,12 @@ git clone https://github.com/kenluu3/CPS643-VR-Horde-Survival
 4. Install and import the following assets to your local project:
 <ul>
   <ul>
-    <li>[SteamVR Plugin](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)</li>
-    <li>[Mothership](https://assetstore.unity.com/packages/3d/vehicles/space/mothership-35608)</li>
-    <li>[Medium Mech Striker](https://assetstore.unity.com/packages/3d/characters/robots/medium-mech-striker-124342)</li>
-    <li>[Alien Ships Pack](https://assetstore.unity.com/packages/3d/vehicles/space/alien-ships-pack-131137)</li>
-    <li>[Adam Character Pack: Adam, Guard, Lu](https://assetstore.unity.com/packages/3d/characters/adam-character-pack-adam-guard-lu-74842)</li>
-    <li>[Magic Effects FREE](https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933)</li>
+    <li><a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">SteamVR Plugin</a></li>
+    <li><a href="https://assetstore.unity.com/packages/3d/vehicles/space/mothership-35608">Mothership</a></li>
+    <li><a href="https://assetstore.unity.com/packages/3d/characters/robots/medium-mech-striker-124342">Medium Mech Striker</a></li>
+    <li><a href="https://assetstore.unity.com/packages/3d/vehicles/space/alien-ships-pack-131137">Alien Ships Pack</a></li>
+    <li><a href="https://assetstore.unity.com/packages/3d/characters/adam-character-pack-adam-guard-lu-74842">Adam Character Pack: Adam, Guard, Lu</a></li>
+    <li><a href="https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933">Magic Effects FREE</a></li>
   </ul>
 </ul>
 5. Restart the Unity Editor.
