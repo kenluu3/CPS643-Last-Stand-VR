@@ -12,7 +12,7 @@ git clone https://github.com/kenluu3/CPS643-VR-Horde-Survival
 ```
 2. Add the project to Unity Hub.
 3. Install the `Animation Rigging` Package in Unity.
-4. Install and import the following assets to your local project:
+4. Download and import the following assets to your local project:
 <ul>
   <ul>
     <li><a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">SteamVR Plugin</a></li>
