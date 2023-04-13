@@ -20,9 +20,10 @@ public class BGMPlayer : MonoBehaviour
     public void PlayBGM(GameState gameState)
     {
         audioSource.Stop();
+        if (gameState == GameState.PreGame) audioSource.clip = preGameBGM;
+        else if (gameState == GameState.PlayGame) audioSource.clip = playGameBGM;
+        else audioSource.clip = postGameBGM;
 
-        if (gameState == GameState.PreGame) audioSource.PlayOneShot(preGameBGM);
-        else if (gameState == GameState.PlayGame) audioSource.PlayOneShot(playGameBGM);
-        else audioSource.PlayOneShot(postGameBGM);
+        audioSource.Play();
     }
 }
