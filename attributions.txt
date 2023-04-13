@@ -1,11 +1,12 @@
-// Delete two of the following three lines, leaving only the true statement and fill in the blanks.
-
 1) I've completed this statement by myself entirely.
 
 //	Place your attributions below:
 //
 // 	How to: Unity VR Joystick Movement
-//	https://www.youtube.com/watch?v=SqP7Xzldr1Q
+//	https://www.youtube.com/watch?v=SqP7Xzldr1Q 
+// 
+//  How to make a body in VR
+//  https://www.youtube.com/watch?v=tBYl-aSxUe0
 
 //	Example:
 //
