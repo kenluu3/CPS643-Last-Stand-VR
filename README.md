@@ -24,7 +24,7 @@ git clone https://github.com/kenluu3/CPS643-VR-Horde-Survival
   </ul>
 </ul>
 5. Restart the Unity Editor.
-6. Open the `Scenes` folder and find `MainScene`
+6. Open the `Scenes` folder and open `MainScene`.
 7. Hit play.
 
 ## Full List of External Assets Used
