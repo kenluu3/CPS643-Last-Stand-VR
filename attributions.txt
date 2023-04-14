@@ -6,7 +6,7 @@
 //	https://www.youtube.com/watch?v=SqP7Xzldr1Q 
 // 
 //  How to make a body in VR
-//  https://www.youtube.com/watch?v=tBYl-aSxUe0
+//  https://www.youtube.com/playlist?list=PLrk7hDwk64-ZRB5lz-xJhgH7Lp6MIRcHJ
 //
 //  FULL 3D ENEMY AI in 6 MINUTES! || Unity Tutorial
 //  https://www.youtube.com/watch?v=UjkSFoLxesw
