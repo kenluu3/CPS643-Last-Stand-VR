@@ -23,8 +23,8 @@ git clone https://github.com/kenluu3/CPS643-VR-Horde-Survival
     <li><a href="https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933">Magic Effects FREE</a></li>
   </ul>
 </ul>
-5. Restart the Unity Editor.
-6. Open the `Scenes` folder and open `MainScene`.
+5. Restart the Unity Editor. <br>
+6. Open the `Scenes` folder and find `MainScene`. <br>
 7. Hit play.
 
 ## Full List of External Assets Used
