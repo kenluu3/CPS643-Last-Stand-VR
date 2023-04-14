@@ -1,5 +1,5 @@
-# CPS643: VR Horde Survival
-A VR Sci-Fi Horde Survival Game built using `Unity version 2021.3.16` as part of CPS643 final project.
+# CPS643: Last Stand VR
+Last Stand VR is a VR sci-fi horde survival game built using `Unity version 2021.3.16` as part of CPS643 final project.
 
 ## Team Members
 Ken Luu (500901583) <br>
