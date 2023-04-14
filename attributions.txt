@@ -7,6 +7,12 @@
 // 
 //  How to make a body in VR
 //  https://www.youtube.com/watch?v=tBYl-aSxUe0
+//
+//  FULL 3D ENEMY AI in 6 MINUTES! || Unity Tutorial
+//  https://www.youtube.com/watch?v=UjkSFoLxesw
+//
+//  Unity-Technologies / NavMeshComponents
+//  https://github.com/Unity-Technologies/NavMeshComponents
 
 //	Example:
 //
